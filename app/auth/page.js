@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -54,7 +54,7 @@ function getFriendlyFirebaseMessage(err) {
     return "Sign-in popup was blocked by the browser. Please allow popups and try again.";
   }
   if (has("auth/operation-not-allowed")) {
-    return "This sign-in method is disabled in Firebase console. Enable it in Authentication → Sign-in method.";
+    return "This sign-in method is disabled in Firebase console. Enable it in Authentication â†’ Sign-in method.";
   }
   if (has("auth/invalid-email")) {
     return "Please enter a valid email address.";
@@ -215,7 +215,7 @@ export default function LoginPage() {
           </ul>
         </nav>
 
-        {/* Mobile hamburger — visible only below 880px */}
+        {/* Mobile hamburger â€” visible only below 880px */}
         <button
           onClick={() => setMobileOpen(true)}
           className="[@media(min-width:880px)]:hidden p-2 rounded-lg border border-gray-700 text-white"
@@ -450,22 +450,22 @@ export default function LoginPage() {
 
           {/* Contact Info */}
           <div className="flex flex-col gap-2 text-sm px-4">
-            <p>📞+1-587-438-7822</p>
+            <p>ðŸ“ž+1-587-438-7822</p>
             <Link
               href="mailto:mohamadalhajj2002@gmail.com"
               className="hover:text-[#FFCC66] transition-all hover:underline underline-offset-4"
             >
-              📧mohamadalhajj2002@gmail.com
+              ðŸ“§mohamadalhajj2002@gmail.com
             </Link>
             <Link
               href="https://maps.app.goo.gl/fPGxCvfNLQTd28wRA"
               target="_blank"
               className="hover:text-[#FFCC66] transition-all hover:underline underline-offset-4"
             >
-              📍2806 Ogden Rd SE, Calgary, AB
+              ðŸ“2806 Ogden Rd SE, Calgary, AB
             </Link>
 
-            <p>🕛Mon–Fri: 9am–6pm</p>
+            <p>ðŸ•›Monâ€“Fri: 9amâ€“6pm</p>
           </div>
 
           {/* Social Links */}
@@ -502,3 +502,4 @@ export default function LoginPage() {
     </div>
   );
 }
+

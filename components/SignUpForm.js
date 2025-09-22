@@ -1,19 +1,26 @@
 ﻿"use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+
+import Link from "next/link";
+
+import Link from "next/link";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
   updateProfile,
 } from "firebase/auth";
-import IconButton from "@mui/material/IconButton";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { FcGoogle } from "react-icons/fc";
 
-// If you use a path alias, change this to: import { auth } from "@/firebase/firebase";
-import { auth } from "../firebase/firebase";
+import Link from "next/link";
+
+import Link from "next/link";
+
+import Link from "next/link";
+
+// If you use a path alias, change this to: 
+import Link from "next/link";
+
+import Link from "next/link";
 
 export default function SignUpForm() {
   const router = useRouter();
@@ -177,8 +184,8 @@ export default function SignUpForm() {
               onChange={(e) => setAgree(e.target.checked)}
             />
             <span className="text-white/80">
-              I agree to the <a className="underline underline-offset-4 text-gold" href="#">Terms of Service</a> and{" "}
-              <a className="underline underline-offset-4 text-gold" href="#">Privacy Policy</a>.
+              I agree to the <Link href="/booking" className="underline underline-offset-4 text-gold" >Terms of Service</Link> and{" "}
+              <Link href="/booking" className="underline underline-offset-4 text-gold" >Privacy Policy</Link>.
             </span>
           </label>
 
@@ -213,10 +220,11 @@ export default function SignUpForm() {
 
           <div className="text-center text-sm text-white/80">
             Already have an account?{" "}
-            <a href="/auth" className="text-gold underline underline-offset-4">Log in</a>
+            <Link href="/auth"  className="text-gold underline underline-offset-4">Log in</Link>
           </div>
         </form>
       </div>
     </div>
   );
 }
+

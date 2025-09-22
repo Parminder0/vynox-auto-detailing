@@ -1,5 +1,6 @@
-"use client";
-import { useState } from "react";
+﻿"use client";
+
+import Link from "next/link";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -63,3 +64,4 @@ export default function ContactPage() {
     </main>
   );
 }
+

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -1216,21 +1216,21 @@ export default function InventoryPage() {
               <h4 className="text-[#FFCC66] font-semibold mb-2">
                 Contact Info
               </h4>
-              <p>📞 +1-587-438-7822</p>
+              <p>ðŸ“ž +1-587-438-7822</p>
               <Link
                 href="mailto:mohamadalhajj2002@gmail.com"
                 className="hover:text-[#FFCC66] transition-all hover:underline underline-offset-4"
               >
-                📧 mohamadalhajj2002@gmail.com
+                ðŸ“§ mohamadalhajj2002@gmail.com
               </Link>
               <Link
                 href="https://maps.app.goo.gl/fPGxCvfNLQTd28wRA"
                 target="_blank"
                 className="hover:text-[#FFCC66] transition-all hover:underline underline-offset-4"
               >
-                📍 2806 Ogden Rd SE, Calgary, AB
+                ðŸ“ 2806 Ogden Rd SE, Calgary, AB
               </Link>
-              <p>🕛 Mon–Fri: 9am–6pm</p>
+              <p>ðŸ•› Monâ€“Fri: 9amâ€“6pm</p>
             </div>
 
             {/* Social Links */}
@@ -1276,3 +1276,4 @@ export default function InventoryPage() {
     </div>
   );
 }
+
