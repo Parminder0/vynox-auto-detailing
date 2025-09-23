@@ -122,7 +122,7 @@ export default function SignUpPage() {
 
       const cred = await createUserWithEmailAndPassword(auth, email, password);
       try {
-        await updateProfile(cred.user, { displayName: `${firstName} ${lastName}`.trim() });
+        await updateProfile(cred.user, { displayName: ${firstName} ${lastName}.trim() });
         // Optionally: write { firstName, lastName, phone } to Firestore here.
       } catch (_) {}
 
@@ -166,14 +166,14 @@ export default function SignUpPage() {
         {/* Desktop nav */}
         <nav className="max-[879px]:hidden flex items-center justify-center">
           <ul className="flex items-center justify-center list-none m-0 p-1 gap-12">
-            {["Log in", "Gift Cards", "Services", "About", "Contact"].map((link) => (
-              <li key={link} className="flex justify-center items-center p-1">
-                <a
-                  href="#"
+            {NAV.map((item) => (
+              <li key={item.href} className="flex justify-center items-center p-1">
+                <Link
+                  href={item.href}
                   className="text-white text-base tracking-wide font-medium font-sans no-underline hover:underline hover:text-[#FFCC66] underline-offset-4 transition-all duration-300 ease-in-out"
                 >
-                  {link}
-                </a>
+                  {item.label}
+                </Link>
               </li>
             ))}
             <li>
@@ -203,7 +203,7 @@ export default function SignUpPage() {
           }`}
         >
           <div
-            className={`absolute inset-0 bg-black/60 transition-opacity ${mobileOpen ? "opacity-100" : "opacity-0"}`}
+            className={absolute inset-0 bg-black/60 transition-opacity ${mobileOpen ? "opacity-100" : "opacity-0"}}
             onClick={() => setMobileOpen(false)}
           />
           <aside
@@ -495,7 +495,7 @@ export default function SignUpPage() {
           <div className="flex flex-col gap-2 text-sm px-4">
             <p>📞 +1-587-438-7822</p>
             <Link href="mailto:mohamadalhajj2002@gmail.com" className="hover:text-[#FFCC66] transition-all hover:underline underline-offset-4">
-              ✉️ mohamadalhajj2002@gmail.com
+              ✉ mohamadalhajj2002@gmail.com
             </Link>
             <Link href="https://maps.app.goo.gl/fPGxCvfNLQTd28wRA" target="_blank" className="hover:text-[#FFCC66] transition-all hover:underline underline-offset-4">
               📍 2806 Ogden Rd SE, Calgary, AB
@@ -527,4 +527,3 @@ export default function SignUpPage() {
     </div>
   );
 }
-
