@@ -5,15 +5,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { CiCalendar } from "react-icons/ci";
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { FaRegEye, FaRegEyeSlash, FaFacebook, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { useForm, Controller } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
-import { signInWithEmailAndPassword, sendPasswordResetEmail, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth } from "@/firebase/firebase";
-import { FaFacebook, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { FiMenu, FiX } from "react-icons/fi";
 
 //Error -> Friendly message.This function converts different firebase errors into friendly from.
@@ -70,7 +74,6 @@ function getFriendlyFirebaseMessage(err) {
 }
 
 export default function LoginPage() {
-  //router
   const router = useRouter();
 
   const {
@@ -95,7 +98,7 @@ export default function LoginPage() {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => (document.body.style.overflow = "");
   }, [mobileOpen]);
-  //mobile nav
+
   const NAV = [
     { label: "Log in", href: "/login" },
     { label: "Gift Cards", href: "/giftcards" },
@@ -104,11 +107,9 @@ export default function LoginPage() {
     { label: "Contact", href: "/contact" },
   ];
 
-  //main variables
   const ERROR_RED = "#ef4444";
   const GOLD = "#FFCC66";
 
-  //material ui
   const inputSx = {
     "& .MuiInputBase-input": { color: "white" },
     "& .MuiFormLabel-root": { color: "rgba(255,255,255,0.7)" },
@@ -129,7 +130,6 @@ export default function LoginPage() {
     },
   };
 
-  //submit function
   const onSubmit = async ({ email, password }) => {
     try {
       setResetMsg("");
@@ -141,7 +141,7 @@ export default function LoginPage() {
       setError("root", { message: getFriendlyFirebaseMessage(err) });
     }
   };
-  //forgot password function
+
   const handleForgotPassword = async () => {
     const email = (getValues("email") || "").trim();
     setResetMsg("");
@@ -162,7 +162,7 @@ export default function LoginPage() {
       setResetLoading(false);
     }
   };
-  //google auth function
+
   const handleGoogleAuth = async () => {
     try {
       clearErrors("root");
@@ -343,11 +343,7 @@ export default function LoginPage() {
                           aria-label={showPassword ? "Hide password" : "Show password"}
                           sx={{ color: "rgba(255,255,255,0.85)" }}
                         >
-                          {showPassword ? (
-                            <FaRegEyeSlash size={22} color="#424c66" />
-                          ) : (
-                            <FaRegEye size={22} color="#424c66" />
-                          )}
+                          {showPassword ? <FaRegEyeSlash size={22} color="#424c66" /> : <FaRegEye size={22} color="#424c66" />}
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -369,11 +365,7 @@ export default function LoginPage() {
               </button>
             </div>
 
-            {/* Messages */}
-            {resetMsg && <p className="text-sm text-emerald-300">{resetMsg}</p>}
-            {errors.root?.message && <p className="text-sm text-[#ef4444]">{errors.root.message}</p>}
-
-            {/Submit/}
+            {/* Submit */}
             <button
               type="submit"
               disabled={isSubmitting}
@@ -398,7 +390,7 @@ export default function LoginPage() {
               Continue with Google
             </button>
 
-            {/Sign Up/}
+            {/* Sign Up */}
             <p className="text-center text-sm mt-2 text-white">
               Don&apos;t have an account?{" "}
               <Link href="/signup" className="text-[#6699FF] hover:underline font-semibold">
@@ -414,13 +406,7 @@ export default function LoginPage() {
         <div className="mx-auto flex flex-col md:flex-row justify-around items-center gap-6 md:flex-wrap">
           {/* Logo */}
           <div className="flex flex-none items-center justify-center md:basis-1/2 lg:basis-1/4">
-            <Image
-              src="/vynoxlogo.jpg"
-              width={100}
-              height={100}
-              alt="Logo"
-              className="rounded-md shrink-0 w-[100px] h-[100px] "
-            />
+            <Image src="/vynoxlogo.jpg" width={100} height={100} alt="Logo" className="rounded-md shrink-0 w-[100px] h-[100px] " />
           </div>
 
           {/* Navigation */}
@@ -431,19 +417,13 @@ export default function LoginPage() {
             <Link href="/about" className="hover:text-[#FFCC66] transition-colors hover:underline underline-offset-4">
               About
             </Link>
-            <Link
-              href="/services"
-              className="hover:text-[#FFCC66] transition-colors hover:underline underline-offset-4"
-            >
+            <Link href="/services" className="hover:text-[#FFCC66] transition-colors hover:underline underline-offset-4">
               Services
             </Link>
             <Link href="/contact" className="hover:text-[#FFCC66] transition-colors hover:underline underline-offset-4">
               Contact
             </Link>
-            <Link
-              href="/giftcards"
-              className="hover:text-[#FFCC66] transition-colors hover:underline underline-offset-4"
-            >
+            <Link href="/giftcards" className="hover:text-[#FFCC66] transition-colors hover:underline underline-offset-4">
               Gift Cards
             </Link>
           </nav>
@@ -451,17 +431,10 @@ export default function LoginPage() {
           {/* Contact Info */}
           <div className="flex flex-col gap-2 text-sm px-4">
             <p>📞+1-587-438-7822</p>
-            <Link
-              href="mailto:mohamadalhajj2002@gmail.com"
-              className="hover:text-[#FFCC66] transition-all hover:underline underline-offset-4"
-            >
+            <Link href="mailto:mohamadalhajj2002@gmail.com" className="hover:text-[#FFCC66] transition-all hover:underline underline-offset-4">
               📧mohamadalhajj2002@gmail.com
             </Link>
-            <Link
-              href="https://maps.app.goo.gl/fPGxCvfNLQTd28wRA"
-              target="_blank"
-              className="hover:text-[#FFCC66] transition-all hover:underline underline-offset-4"
-            >
+            <Link href="https://maps.app.goo.gl/fPGxCvfNLQTd28wRA" target="_blank" className="hover:text-[#FFCC66] transition-all hover:underline underline-offset-4">
               📍2806 Ogden Rd SE, Calgary, AB
             </Link>
 
@@ -472,18 +445,10 @@ export default function LoginPage() {
           <div className="flex flex-col gap-2 px-4">
             <h4 className="text-[#FFCC66] font-semibold mb-1 text-center">Follow Us</h4>
             <div className="flex gap-4 text-lg">
-              <a
-                href="https://www.facebook.com/share/1AoCRMNVMC/?mibextid=wwXIfr"
-                target="_blank"
-                className="hover:text-[#FFCC66] transition-colors "
-              >
+              <a href="https://www.facebook.com/share/1AoCRMNVMC/?mibextid=wwXIfr" target="_blank" className="hover:text-[#FFCC66] transition-colors ">
                 <FaFacebook size={24} />
               </a>
-              <a
-                href="https://www.instagram.com/vynoxautodetailing?igsh=aWpxY2hqNjdweWQx"
-                target="_blank"
-                className="hover:text-[#FFCC66] transition-colors"
-              >
+              <a href="https://www.instagram.com/vynoxautodetailing?igsh=aWpxY2hqNjdweWQx" target="_blank" className="hover:text-[#FFCC66] transition-colors">
                 <FaInstagram size={24} />
               </a>
               <a href="/contact" target="_blank" className="hover:text-[#FFCC66] transition-colors">
@@ -494,10 +459,8 @@ export default function LoginPage() {
         </div>
 
         {/* Bottom note */}
-        <hr className=" border-gray-500  my-4"></hr>
-        <p className="text-xs text-gray-500 text-center ">
-          &copy; {new Date().getFullYear()} Vynox Inventory. All rights reserved.
-        </p>
+        <hr className=" border-gray-500  my-4" />
+        <p className="text-xs text-gray-500 text-center ">&copy; {new Date().getFullYear()} Vynox Inventory. All rights reserved.</p>
       </footer>
     </div>
   );
