@@ -1,4 +1,4 @@
-"use client";
+"use client";// this is a client component for using hooks and interactivity
  
 import Link from "next/link";
 import Image from "next/image";
