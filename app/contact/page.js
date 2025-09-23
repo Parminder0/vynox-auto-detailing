@@ -160,6 +160,12 @@ export default function ContactPage() {
               Services
             </Link>
             <Link
+              href="/contact"
+              className="hover:text-[#FFCC66] hover:underline"
+            >
+              contact
+            </Link>
+            <Link
               href="/giftcards"
               className="hover:text-[#FFCC66] hover:underline"
             >

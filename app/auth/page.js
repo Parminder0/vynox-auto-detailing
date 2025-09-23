@@ -168,7 +168,7 @@ export default function LoginPage() {
       clearErrors("root");
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
-      // router.push("/");
+       router.push("/");
     } catch (err) {
       setError("root", { message: getFriendlyFirebaseMessage(err) });
     }
