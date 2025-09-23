@@ -122,7 +122,7 @@ export default function SignUpPage() {
 
       const cred = await createUserWithEmailAndPassword(auth, email, password);
       try {
-        await updateProfile(cred.user, { displayName: ${firstName} ${lastName}.trim() });
+        await updateProfile(cred.user, { displayName: `${firstName} ${lastName}`.trim() });
         // Optionally: write { firstName, lastName, phone } to Firestore here.
       } catch (_) {}
 
@@ -203,7 +203,7 @@ export default function SignUpPage() {
           }`}
         >
           <div
-            className={absolute inset-0 bg-black/60 transition-opacity ${mobileOpen ? "opacity-100" : "opacity-0"}}
+            className={`absolute inset-0 bg-black/60 transition-opacity ${mobileOpen ? "opacity-100" : "opacity-0"}`}
             onClick={() => setMobileOpen(false)}
           />
           <aside
