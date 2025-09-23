@@ -196,14 +196,14 @@ export default function LoginPage() {
         {/* Desktop nav  */}
         <nav className="max-[879px]:hidden flex items-center justify-center">
           <ul className="flex items-center justify-center list-none m-0 p-1 gap-12">
-            {["Log in", "Gift Cards", "Services", "About", "Contact"].map((link) => (
-              <li key={link} className="flex justify-center items-center p-1">
-                <a
-                  href="/contact"
+            {NAV.map((item) => (
+              <li key={item.href} className="flex justify-center items-center p-1">
+                <Link
+                  href={item.href}
                   className="text-white text-base tracking-wide font-medium font-sans no-underline hover:underline hover:text-[#FFCC66] underline-offset-4 transition-all duration-300 ease-in-out"
                 >
-                  {link}
-                </a>
+                  {item.label}
+                </Link>
               </li>
             ))}
             <li>
@@ -373,7 +373,7 @@ export default function LoginPage() {
             {resetMsg && <p className="text-sm text-emerald-300">{resetMsg}</p>}
             {errors.root?.message && <p className="text-sm text-[#ef4444]">{errors.root.message}</p>}
 
-            {/*Submit*/}
+            {/Submit/}
             <button
               type="submit"
               disabled={isSubmitting}
@@ -398,7 +398,7 @@ export default function LoginPage() {
               Continue with Google
             </button>
 
-            {/*Sign Up*/}
+            {/Sign Up/}
             <p className="text-center text-sm mt-2 text-white">
               Don&apos;t have an account?{" "}
               <Link href="/signup" className="text-[#6699FF] hover:underline font-semibold">
@@ -502,4 +502,3 @@ export default function LoginPage() {
     </div>
   );
 }
-
