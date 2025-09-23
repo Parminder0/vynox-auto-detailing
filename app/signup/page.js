@@ -461,69 +461,102 @@ export default function SignUpPage() {
         </div>
       </main>
 
-      {/* FOOTER */}
-      <footer className="bg-black text-gray-300 p-4 border-t border-gray-800 mt-auto">
-        <div className="mx-auto flex flex-col md:flex-row justify-around items-center gap-6 md:flex-wrap">
-          <div className="flex flex-none items-center justify-center md:basis-1/2 lg:basis-1/4">
-            <Image
-              src="/vynoxlogo.jpg"
-              width={100}
-              height={100}
-              alt="Logo"
-              className="rounded-md shrink-0 w-[100px] h-[100px] "
-            />
+      {/* FOOTER (4-part layout with dividers) */}
+            <footer className="bg-black text-gray-300 px-6 py-8 border-t border-gray-800">
+              <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center lg:text-left">
+                {/* Logo */}
+                <div className="flex flex-col items-center lg:items-start border-b sm:border-b-0 sm:border-r border-gray-700 pb-4 sm:pb-0 sm:pr-6">
+                  <Image
+                    src="/vynoxlogo.jpg"
+                    width={100}
+                    height={100}
+                    alt="Logo"
+                    className="rounded-md"
+                  />
+                </div>
+      
+                {/* Navigation */}
+                <nav className="flex flex-col gap-2 border-b sm:border-b-0 sm:border-r border-gray-700 pb-4 sm:pb-0 sm:pr-6">
+                  <Link href="/" className="hover:text-[#FFCC66] hover:underline">
+                    Home
+                  </Link>
+                  <Link href="/about" className="hover:text-[#FFCC66] hover:underline">
+                    About
+                  </Link>
+                  <Link
+                    href="/services"
+                    className="hover:text-[#FFCC66] hover:underline"
+                  >
+                    Services
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="hover:text-[#FFCC66] hover:underline"
+                  >
+                    contact
+                  </Link>
+                  <Link
+                    href="/giftcards"
+                    className="hover:text-[#FFCC66] hover:underline"
+                  >
+                    Gift Cards
+                  </Link>
+                </nav>
+      
+                {/* Contact Info */}
+                <div className="flex flex-col gap-2 border-b sm:border-b-0 sm:border-r border-gray-700 pb-4 sm:pb-0 sm:pr-6">
+                  <p>📞 +1-587-438-7822</p>
+                  <Link
+                    href="mailto:mohamadalhajj2002@gmail.com"
+                    className="hover:text-[#FFCC66] hover:underline"
+                  >
+                    📧 mohamadalhajj2002@gmail.com
+                  </Link>
+                  <Link
+                    href="https://maps.app.goo.gl/fPGxCvfNLQTd28wRA"
+                    target="_blank"
+                    className="hover:text-[#FFCC66] hover:underline"
+                  >
+                    📍 2806 Ogden Rd SE, Calgary, AB
+                  </Link>
+                  <p>🕛 Mon–Fri: 9am–6pm</p>
+                </div>
+      
+                {/* Social Links */}
+                <div className="flex flex-col items-center lg:items-start gap-2">
+                  <h4 className="text-[#FFCC66] font-semibold">Follow Us</h4>
+                  <div className="flex gap-4 text-lg">
+                    <a
+                      href="https://facebook.com"
+                      target="_blank"
+                      className="hover:text-[#FFCC66]"
+                    >
+                      <FaFacebook size={22} />
+                    </a>
+                    <a
+                      href="https://instagram.com"
+                      target="_blank"
+                      className="hover:text-[#FFCC66]"
+                    >
+                      <FaInstagram size={22} />
+                    </a>
+                    <a
+                      href="https://linkedin.com"
+                      target="_blank"
+                      className="hover:text-[#FFCC66]"
+                    >
+                      <FaLinkedinIn size={22} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+      
+              {/* Bottom note */}
+              <hr className="border-gray-700 my-4" />
+              <p className="text-xs text-gray-500 text-center">
+                &copy; {new Date().getFullYear()} Vynox Inventory. All rights reserved.
+              </p>
+            </footer>
           </div>
-
-          <nav className="flex  gap-4 sm:gap-8 text-sm px-4   items-center  py-2 sm:py-0">
-            <Link href="/" className="hover:text-[#FFCC66] transition-colors hover:underline underline-offset-4">
-              Home
-            </Link>
-            <Link href="/about" className="hover:text-[#FFCC66] transition-colors hover:underline underline-offset-4">
-              About
-            </Link>
-            <Link href="/services" className="hover:text-[#FFCC66] transition-colors hover:underline underline-offset-4">
-              Services
-            </Link>
-            <Link href="/contact" className="hover:text-[#FFCC66] transition-colors hover:underline underline-offset-4">
-              Contact
-            </Link>
-            <Link href="/giftcards" className="hover:text-[#FFCC66] transition-colors hover:underline underline-offset-4">
-              Gift Cards
-            </Link>
-          </nav>
-
-          <div className="flex flex-col gap-2 text-sm px-4">
-            <p>📞 +1-587-438-7822</p>
-            <Link href="mailto:mohamadalhajj2002@gmail.com" className="hover:text-[#FFCC66] transition-all hover:underline underline-offset-4">
-              ✉ mohamadalhajj2002@gmail.com
-            </Link>
-            <Link href="https://maps.app.goo.gl/fPGxCvfNLQTd28wRA" target="_blank" className="hover:text-[#FFCC66] transition-all hover:underline underline-offset-4">
-              📍 2806 Ogden Rd SE, Calgary, AB
-            </Link>
-            <p>🕘 Mon–Fri: 9am–6pm</p>
-          </div>
-
-          <div className="flex flex-col gap-2 px-4">
-            <h4 className="text-[#FFCC66] font-semibold mb-1 text-center">Follow Us</h4>
-            <div className="flex gap-4 text-lg">
-              <a href="https://www.facebook.com/share/1AoCRMNVMC/?mibextid=wwXIfr" target="_blank" className="hover:text-[#FFCC66] transition-colors ">
-                <FaFacebook size={24} />
-              </a>
-              <a href="https://www.instagram.com/vynoxautodetailing?igsh=aWpxY2hqNjdweWQx" target="_blank" className="hover:text-[#FFCC66] transition-colors">
-                <FaInstagram size={24} />
-              </a>
-              <a href="#" target="_blank" className="hover:text-[#FFCC66] transition-colors">
-                <FaLinkedinIn size={24} />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <hr className=" border-gray-500  my-4" />
-        <p className="text-xs text-gray-500 text-center ">
-          &copy; {new Date().getFullYear()} Vynox Inventory. All rights reserved.
-        </p>
-      </footer>
-    </div>
-  );
-}
+        );
+      }
