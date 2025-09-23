@@ -136,7 +136,7 @@ export default function LoginPage() {
       clearErrors("root");
       await signInWithEmailAndPassword(auth, email, password);
       reset();
-      // router.push("/");
+      router.push("/");
     } catch (err) {
       setError("root", { message: getFriendlyFirebaseMessage(err) });
     }
