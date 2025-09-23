@@ -1216,21 +1216,21 @@ export default function InventoryPage() {
               <h4 className="text-[#FFCC66] font-semibold mb-2">
                 Contact Info
               </h4>
-              <p>ðŸ“ž +1-587-438-7822</p>
+              <p> +1-587-438-7822</p>
               <Link
                 href="mailto:mohamadalhajj2002@gmail.com"
                 className="hover:text-[#FFCC66] transition-all hover:underline underline-offset-4"
               >
-                ðŸ“§ mohamadalhajj2002@gmail.com
+                mohamadalhajj2002@gmail.com
               </Link>
               <Link
                 href="https://maps.app.goo.gl/fPGxCvfNLQTd28wRA"
                 target="_blank"
                 className="hover:text-[#FFCC66] transition-all hover:underline underline-offset-4"
               >
-                ðŸ“ 2806 Ogden Rd SE, Calgary, AB
+                 2806 Ogden Rd SE, Calgary, AB
               </Link>
-              <p>ðŸ•› Monâ€“Fri: 9amâ€“6pm</p>
+              <p> Mon-Fri: 9am-6pm</p>
             </div>
 
             {/* Social Links */}
