@@ -1,5 +1,4 @@
 "use client"; // this is a client component for using hooks and interactivity
-
 import Link from "next/link";
 import Image from "next/image";
 import { CiCalendar } from "react-icons/ci";
@@ -58,6 +57,7 @@ export default function HomePage() {
           <h1 className="text-5xl font-bold">Vynox Auto Detailing</h1>
           <p className="mt-4 text-xl">Premium Car Care. Inside & Out.</p>
 
+
           {/* 👇 Buttons side by side */}
           <div className="mt-6 flex gap-4">
             <button className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#FFCC66] to-[#FF7E5F] px-6 py-3 text-white font-medium shadow-[0_0_10px_rgba(255,204,102,0.6),0_0_20px_rgba(255,126,95,0.5)] transition-transform duration-300 hover:scale-105">
@@ -72,8 +72,16 @@ export default function HomePage() {
               View Services
             </Link>
           </div>
+
+          {/* 👇 Book Now button moved here */}
+          <button className="mt-6 flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#FFCC66] to-[#FF7E5F] px-6 py-3 text-white font-medium shadow-[0_0_10px_rgba(255,204,102,0.6),0_0_20px_rgba(255,126,95,0.5)] transition-transform duration-300 hover:scale-105">
+            <CiCalendar className="text-xl" />
+            Book Now
+          </button>
+
         </div>
       </section>
+
 
 
 
@@ -291,5 +299,4 @@ export default function HomePage() {
     </div>
   );
 }
- 
  
