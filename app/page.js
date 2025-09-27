@@ -1,10 +1,10 @@
 "use client"; // this is a client component for using hooks and interactivity
- 
+
 import Link from "next/link";
 import Image from "next/image";
 import { CiCalendar } from "react-icons/ci";
 import { FaFacebook, FaInstagram, FaLinkedinIn, FaStar } from "react-icons/fa";
- 
+
 export default function HomePage() {
   return (
     <div className="min-h-screen w-full bg-[#0a1a4a] flex flex-col text-white">
@@ -23,7 +23,7 @@ export default function HomePage() {
             />
           </Link>
         </div>
- 
+
         <nav className="hidden md:flex items-center gap-8">
           <Link
             href="/auth"
@@ -46,7 +46,7 @@ export default function HomePage() {
           </Link>
         </nav>
       </header>
- 
+
       {/* HERO */}
       <section className="relative">
         <img
@@ -58,13 +58,24 @@ export default function HomePage() {
           <h1 className="text-5xl font-bold">Vynox Auto Detailing</h1>
           <p className="mt-4 text-xl">Premium Car Care. Inside & Out.</p>
 
-          {/* 👇 Book Now button moved here */}
-          <button className="mt-6 flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#FFCC66] to-[#FF7E5F] px-6 py-3 text-white font-medium shadow-[0_0_10px_rgba(255,204,102,0.6),0_0_20px_rgba(255,126,95,0.5)] transition-transform duration-300 hover:scale-105">
-            <CiCalendar className="text-xl" />
-            Book Now
-          </button>
+          {/* 👇 Buttons side by side */}
+          <div className="mt-6 flex gap-4">
+            <button className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#FFCC66] to-[#FF7E5F] px-6 py-3 text-white font-medium shadow-[0_0_10px_rgba(255,204,102,0.6),0_0_20px_rgba(255,126,95,0.5)] transition-transform duration-300 hover:scale-105">
+              <CiCalendar className="text-xl" />
+              Book Now
+            </button>
+
+            <Link
+              href="/services"
+              className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#1a135e] to-[#0f0a6d] px-6 py-3 text-white font-medium shadow-[0_0_10px_rgba(79,172,254,0.6),0_0_20px_rgba(0,242,254,0.5)] transition-transform duration-300 hover:scale-105"
+            >
+              View Services
+            </Link>
+          </div>
         </div>
       </section>
+
+
 
 
       {/* WHY CHOOSE US */}
