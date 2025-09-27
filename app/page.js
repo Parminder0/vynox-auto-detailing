@@ -1,4 +1,4 @@
-"use client";// this is a client component for using hooks and interactivity
+"use client"; // this is a client component for using hooks and interactivity
  
 import Link from "next/link";
 import Image from "next/image";
@@ -37,10 +37,13 @@ export default function HomePage() {
           >
             Inventory
           </Link>
-          <button className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#FFCC66] to-[#FF7E5F] px-5 py-2 text-white font-medium shadow-[0_0_10px_rgba(255,204,102,0.6),0_0_20px_rgba(255,126,95,0.5)] transition-transform duration-300 hover:scale-105">
-            <CiCalendar className="text-xl" />
-            Book Now
-          </button>
+          {/* 👇 Replaced Book Now with Contact link */}
+          <Link
+            href="/contact"
+            className="text-white hover:text-[#FFCC66] transition-colors hover:underline underline-offset-4"
+          >
+            Contact
+          </Link>
         </nav>
       </header>
  
@@ -54,9 +57,16 @@ export default function HomePage() {
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center bg-black/50">
           <h1 className="text-5xl font-bold">Vynox Auto Detailing</h1>
           <p className="mt-4 text-xl">Premium Car Care. Inside & Out.</p>
+
+          {/* 👇 Book Now button moved here */}
+          <button className="mt-6 flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#FFCC66] to-[#FF7E5F] px-6 py-3 text-white font-medium shadow-[0_0_10px_rgba(255,204,102,0.6),0_0_20px_rgba(255,126,95,0.5)] transition-transform duration-300 hover:scale-105">
+            <CiCalendar className="text-xl" />
+            Book Now
+          </button>
         </div>
       </section>
- 
+
+
       {/* WHY CHOOSE US */}
       <section className="py-12 px-6 max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center text-yellow-400 mb-8">
