@@ -100,7 +100,7 @@ export default function LoginPage() {
   }, [mobileOpen]);
 
   const NAV = [
-    { label: "Log in", href: "/login" },
+    { label: "Log in", href: "/auth" },
     { label: "Gift Cards", href: "/giftcards" },
     { label: "Services", href: "/services" },
     { label: "About", href: "/about" },
@@ -136,7 +136,7 @@ export default function LoginPage() {
       clearErrors("root");
       await signInWithEmailAndPassword(auth, email, password);
       reset();
-      // router.push("/");
+      router.push("/");
     } catch (err) {
       setError("root", { message: getFriendlyFirebaseMessage(err) });
     }

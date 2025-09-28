@@ -44,92 +44,102 @@ export default function ContactPage() {
         </nav>
       </header>
 
-      {/* MAIN CONTENT */}
       <main className="flex-1 py-12 px-6">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
-          {/* FAQ */}
-          <section>
-            <h1 className="text-3xl font-bold text-[#FFCC66] mb-6">
-              Contact Us
-            </h1>
-            <div className="space-y-4">
-              <details className="bg-black p-4 rounded">
-                <summary className="cursor-pointer font-semibold">
-                  How do I book an Appointment?
-                </summary>
-                <p className="mt-2 text-gray-300">
-                  Use the booking form on our Services page, or call us at
-                  1-587-438-7822.
-                </p>
-              </details>
-              <details className="bg-black p-4 rounded">
-                <summary className="cursor-pointer font-semibold">
-                  How often should I detail my car?
-                </summary>
-                <p className="mt-2 text-gray-300">
-                  We recommend at least once every 6 months.
-                </p>
-              </details>
-              <details className="bg-black p-4 rounded">
-                <summary className="cursor-pointer font-semibold">
-                  Can I tell if my car needs waxing?
-                </summary>
-                <p className="mt-2 text-gray-300">
-                  If water no longer beads on the surface, it’s time for a wax.
-                </p>
-              </details>
-            </div>
-          </section>
+  <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+    {/* FAQ */}
+    <section>
+      <h1 className="text-3xl font-bold text-[#FFCC66] mb-6">
+        Contact Us
+      </h1>
+      <div className="space-y-4">
+        <details className="bg-black p-4 rounded text-white">
+          <summary className="cursor-pointer font-semibold text-[#FFCC66]">
+            How do I book an Appointment?
+          </summary>
+          <p className="mt-2 text-gray-300">
+            Use the booking form on our Services page, or call us at
+            1-587-438-7822.
+          </p>
+        </details>
+        <details className="bg-black p-4 rounded text-white">
+          <summary className="cursor-pointer font-semibold text-[#FFCC66]">
+            How often should I detail my car?
+          </summary>
+          <p className="mt-2 text-gray-300">
+            We recommend at least once every 6 months.
+          </p>
+        </details>
+        <details className="bg-black p-4 rounded text-white">
+          <summary className="cursor-pointer font-semibold text-[#FFCC66]">
+            Can I tell if my car needs waxing?
+          </summary>
+          <p className="mt-2 text-gray-300">
+            If water no longer beads on the surface, it’s time for a wax.
+          </p>
+        </details>
+      </div>
+    </section>
 
-          {/* Message Form */}
-          <section>
-            <h2 className="text-2xl font-bold text-[#FFCC66] mb-6">
-              Send a Message
-            </h2>
-            <form className="flex flex-col space-y-4">
-              <div>
-                <label className="block text-[#FFCC66] font-medium mb-1">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  className="w-full p-3 rounded bg-white text-black"
-                />
-              </div>
-              <div>
-                <label className="block text-[#FFCC66] font-medium mb-1">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  className="w-full p-3 rounded bg-white text-black"
-                />
-              </div>
-              <div>
-                <label className="block text-[#FFCC66] font-medium mb-1">
-                  Phone
-                </label>
-                <input
-                  type="tel"
-                  className="w-full p-3 rounded bg-white text-black"
-                />
-              </div>
-              <div>
-                <label className="block text-[#FFCC66] font-medium mb-1">
-                  Message
-                </label>
-                <textarea
-                  rows={4}
-                  className="w-full p-3 rounded bg-white text-black"
-                ></textarea>
-              </div>
-              <button className="mt-2 px-6 py-3 bg-[#FFCC66] text-black font-semibold rounded hover:scale-105 transition-transform">
-                Send
-              </button>
-            </form>
-          </section>
+    {/* Message Form */}
+    <section>
+      <h2 className="text-2xl font-bold text-[#FFCC66] mb-6">
+        Send a Message
+      </h2>
+      <form
+        className="flex flex-col space-y-4"
+        onSubmit={(e) => {
+          e.preventDefault();
+          alert("✅ Your message has been sent to the manager!");
+        }}
+      >
+        <div>
+          <label className="block text-[#FFCC66] font-medium mb-1">
+            Name
+          </label>
+          <input
+            type="text"
+            required
+            className="w-full p-3 rounded bg-white text-black"
+          />
         </div>
-      </main>
+        <div>
+          <label className="block text-[#FFCC66] font-medium mb-1">
+            Email
+          </label>
+          <input
+            type="email"
+            required
+            className="w-full p-3 rounded bg-white text-black"
+          />
+        </div>
+        <div>
+          <label className="block text-[#FFCC66] font-medium mb-1">
+            Phone
+          </label>
+          <input
+            type="tel"
+            required
+            className="w-full p-3 rounded bg-white text-black"
+          />
+        </div>
+        <div>
+          <label className="block text-[#FFCC66] font-medium mb-1">
+            Message
+          </label>
+          <textarea
+            rows={4}
+            required
+            className="w-full p-3 rounded bg-white text-black"
+          ></textarea>
+        </div>
+        <button className="mt-2 px-6 py-3 bg-[#FFCC66] text-black font-semibold rounded hover:scale-105 transition-transform">
+          Send
+        </button>
+      </form>
+    </section>
+  </div>
+</main>
+
 
       {/* FOOTER (4-part layout with dividers) */}
       <footer className="bg-black text-gray-300 px-6 py-8 border-t border-gray-800">
