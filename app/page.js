@@ -67,7 +67,7 @@ export default function HomePage() {
 
             <Link
               href="/services"
-              className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#1a135e] to-[#0f0a6d] px-6 py-3 text-white font-medium shadow-[0_0_10px_rgba(79,172,254,0.6),0_0_20px_rgba(0,242,254,0.5)] transition-transform duration-300 hover:scale-105"
+              className="flex items-center gap-2 rounded-lg border border-[#FFCC66] px-6 py-3 text-[#FFCC66] font-medium transition-transform duration-300 hover:scale-105 hover:bg-[#FFCC66]/10"
             >
               View Services
             </Link>
