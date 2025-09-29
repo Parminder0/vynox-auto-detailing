@@ -166,35 +166,71 @@ export default function ServicesPage() {
 
       {/* GALLERY / PAST WORK */}
       <section className="bg-[#071133] px-6 py-16">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-yellow-400 text-center mb-10">
-            Gallery of Past Work
-          </h2>
+  <div className="max-w-6xl mx-auto">
+    <h2 className="text-3xl font-bold text-yellow-400 text-center mb-10">
+      Gallery of Past Work
+    </h2>
 
-          {/* Photos */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            <Image
-              src="/images/before-after1.jpg"
-              alt="Before After 1"
-              width={400}
-              height={300}
-              className="rounded-lg object-cover"
-            />
-            <Image
-              src="/images/before-after2.jpg"
-              alt="Before After 2"
-              width={400}
-              height={300}
-              className="rounded-lg object-cover"
-            />
-            <Image
-              src="/images/before-after3.jpg"
-              alt="Before After 3"
-              width={400}
-              height={300}
-              className="rounded-lg object-cover"
-            />
-          </div>
+    {/* Photos */}
+    <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+      {/* Work Item */}
+      <div className="bg-[#0a194d] p-4 rounded-lg shadow-lg">
+        <div className="flex gap-4 mb-4">
+          <Image
+            src="/images/before detailing-1.jpg"
+            alt="Before Detailing"
+            width={250}
+            height={200}
+            className="rounded-lg object-cover"
+          />
+          <Image
+            src="/images/after detailing-1.jpg"
+            alt="After Detailing"
+            width={250}
+            height={200}
+            className="rounded-lg object-cover"
+          />
+        </div>
+        <h3 className="text-xl font-semibold text-yellow-400 mb-2">
+          Exterior Car Detailing
+        </h3>
+        <p className="text-gray-300 mb-1">
+          Before: Car paint was dull and had scratches.
+        </p>
+        <p className="text-gray-300">
+          After: Scratches removed, paint polished. Worker used new wax for protection.
+        </p>
+      </div>
+
+      {/* Repeat for other works */}
+      <div className="bg-[#0a194d] p-4 rounded-lg shadow-lg">
+        <div className="flex gap-4 mb-4">
+          <Image
+            src="/images/before detailing-2.jpg"
+            alt="Before Engine Cleaning"
+            width={250}
+            height={200}
+            className="rounded-lg object-cover"
+          />
+          <Image
+            src="/images/after detailing-2.jpg"
+            alt="After Engine Cleaning"
+            width={250}
+            height={200}
+            className="rounded-lg object-cover"
+          />
+        </div>
+        <h3 className="text-xl font-semibold text-yellow-400 mb-2">
+          Engine Cleaning
+        </h3>
+        <p className="text-gray-300 mb-1">
+          Before: Engine covered in grease and dirt.
+        </p>
+        <p className="text-gray-300">
+          After: Engine cleaned thoroughly. New filters installed.
+        </p>
+      </div>
+    </div>
 
           {/* Testimonials */}
           <div className="grid md:grid-cols-2 gap-6 mb-12">
@@ -211,9 +247,18 @@ export default function ServicesPage() {
           </div>
 
           {/* Video Placeholder */}
-          <div className="aspect-video bg-black rounded-lg flex items-center justify-center text-gray-400">
-            🎥 Video highlight of detailing process
-          </div>
+         {/* Video Section */}
+<div className="aspect-video bg-black rounded-lg flex items-center justify-center overflow-hidden">
+  <video
+    className="w-full h-full object-cover"
+    controls
+    autoPlay={false} // set to true if you want autoplay
+  >
+    <source src="/videos/autodetailing.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</div>
+
         </div>
       </section>
 
