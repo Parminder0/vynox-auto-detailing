@@ -8,175 +8,127 @@ import { FaFacebook, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 export default function AboutPage() {
   return (
     <div className="min-h-screen w-full bg-[#0a1a4a] flex flex-col text-white">
-      {/* HEADER (same as Home) */}
-      <header className="flex items-center justify-between shadow-md px-6 py-3 bg-black">
-        <div className="flex items-center">
-          <Link href="/">
-            <Image
-              src="/vynoxlogo.jpg"
-              width={50}
-              height={50}
-              alt="Logo"
-              className="rounded-xl"
-              priority
-              title="logo&homepage"
-            />
-          </Link>
-        </div>
+      {/* HEADER */}
+      <header className="flex items-center justify-between shadow-md px-6 py-3 bg-black sticky top-0 z-50">
+        <Link href="/">
+          <Image
+            src="/vynoxlogo.jpg"
+            width={50}
+            height={50}
+            alt="Logo"
+            className="rounded-xl"
+            priority
+          />
+        </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          <Link
-            href="/auth"
-            className="text-white hover:text-[#FFCC66] transition-colors hover:underline underline-offset-4"
-          >
+          <Link href="/auth" className="hover:text-[#FFCC66] hover:underline">
             Log in
           </Link>
-          <Link
-            href="/inventory"
-            className="text-white hover:text-[#FFCC66] transition-colors hover:underline underline-offset-4"
-          >
+          <Link href="/inventory" className="hover:text-[#FFCC66] hover:underline">
             Inventory
           </Link>
-          <button className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#FFCC66] to-[#FF7E5F] px-5 py-2 text-white font-medium shadow-[0_0_10px_rgba(255,204,102,0.6),0_0_20px_rgba(255,126,95,0.5)] transition-transform duration-300 hover:scale-105">
+          <button className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#FFCC66] to-[#FF7E5F] px-5 py-2 text-white font-medium shadow-md transition-transform hover:scale-105">
             <CiCalendar className="text-xl" />
             Book Now
           </button>
         </nav>
       </header>
 
-      {/* ABOUT CONTENT */}
-      <section className="flex-grow px-6 py-16">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl font-extrabold text-yellow-400 mb-8">
-            About Vynox Auto Detailing
-          </h1>
-          <div className="text-gray-200 leading-relaxed text-[15px] space-y-6">
-            <p>
-              At <span className="text-[#FFCC66] font-semibold">Vynox</span>, we
-              believe a car is more than just a way to get from point A to
-              point B—it’s a reflection of you. That’s why we’ve dedicated
-              ourselves to offering premium detailing services that go far
-              beyond surface cleaning. Our team of skilled professionals brings
-              years of experience, precision, and passion into every single
-              vehicle we work on.
-            </p>
-            <p>
-              From the very beginning, our mission has been simple:{" "}
-              <em className="italic">restore the beauty of every vehicle</em> and
-              protect it for years to come. Whether it’s the daily commuter
-              that’s endured countless coffee runs, the family SUV with
-              memories etched in its upholstery, or the luxury car that deserves
-              showroom shine—we treat each with the same attention and respect.
-            </p>
-            <p>
-              What sets us apart is our commitment to using{" "}
-              <span className="underline decoration-yellow-400">
-                eco-friendly, high-quality products
-              </span>{" "}
-              that are safe for your car and safe for the planet. We’ve invested
-              in biodegradable shampoos, non-toxic cleaners, and advanced
-              coatings that not only clean but also protect. This ensures that
-              every detail is sustainable, responsible, and future-ready.
-            </p>
-            <p>
-              Our detailing packages are designed to suit every lifestyle. From
-              deep interior sanitization and leather conditioning to paint
-              correction and ceramic coating, we customize each service to match
-              your needs. We don’t believe in shortcuts—only results that make
-              you fall in love with your car all over again.
-            </p>
-            <p>
-              Beyond services,{" "}
-              <strong className="text-[#FFCC66]">
-                we value relationships
-              </strong>
-              . Every customer who walks into Vynox becomes part of our family.
-              We thrive on honesty, transparency, and trust. That’s why we
-              explain every step of the process, provide fair pricing, and stand
-              by the quality of our work.
-            </p>
-            <p>
-              Our vision for the future is bold. As technology evolves, we aim
-              to be at the forefront—adapting to electric and hybrid vehicles,
-              integrating cutting-edge protective solutions, and continuously
-              innovating. For us, detailing isn’t just maintenance; it’s an art,
-              a science, and a promise to keep your car at its very best.
-            </p>
-            <p>
-              When you choose Vynox, you’re not just choosing a service—you’re
-              choosing peace of mind, unmatched craftsmanship, and a team that
-              cares as much about your car as you do. Because at the end of the
-              day, it’s not just about how your car looks, but how you{" "}
-              <span className="italic">feel</span> when you drive it.
-            </p>
-          </div>
+      {/* HERO SECTION */}
+      <section className="relative text-center px-6 py-16">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-yellow-400 mb-6">
+          About Vynox Auto Detailing
+        </h1>
+        <p className="max-w-3xl mx-auto text-gray-200 text-lg leading-relaxed">
+          Detailing isn’t just maintenance; it’s an art, a science, and a promise
+          to keep your car at its very best. At Vynox, we transform vehicles
+          into reflections of pride, care, and craftsmanship.
+        </p>
+      </section>
 
-          {/* IMAGE */}
-          <div className="mt-12 flex justify-center">
-            <Image
-              src="/images/about.jpg"
-              alt="Automobile"
-              width={650}
-              height={400}
-              className="rounded-2xl shadow-lg border-2 border-yellow-400"
-            />
+      {/* GRID CONTENT */}
+      <section className="px-6 py-12 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div className="space-y-6 text-gray-200 leading-relaxed">
+          <h2 className="text-2xl font-bold text-[#FFCC66]">Our Mission</h2>
+          <p>
+            Restore the beauty of every vehicle and protect it for years to come.
+            Whether it’s a family car, a luxury vehicle, or a daily commuter—
+            we treat each with the same attention and respect.
+          </p>
+
+          <h2 className="text-2xl font-bold text-[#FFCC66]">What Sets Us Apart</h2>
+          <p>
+            Eco-friendly, high-quality products that are safe for your car and
+            the planet. We believe in sustainable detailing that delivers
+            long-lasting results.
+          </p>
+        </div>
+
+        <Image
+          src="/images/about.jpg"
+          alt="Auto Detailing"
+          width={600}
+          height={400}
+          className="rounded-2xl shadow-lg border-2 border-yellow-400 mx-auto"
+        />
+      </section>
+
+      {/* VALUES SECTION */}
+      <section className="px-6 py-12 bg-black/40">
+        <div className="max-w-5xl mx-auto text-center space-y-12">
+          <h2 className="text-3xl font-bold text-yellow-400">Our Values</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="p-6 bg-[#0d235d] rounded-xl shadow hover:shadow-lg transition">
+              <h3 className="text-xl font-semibold mb-2">Craftsmanship</h3>
+              <p>Every detail is perfected with precision, care, and passion.</p>
+            </div>
+            <div className="p-6 bg-[#0d235d] rounded-xl shadow hover:shadow-lg transition">
+              <h3 className="text-xl font-semibold mb-2">Sustainability</h3>
+              <p>Eco-friendly products that are safe for your car & planet.</p>
+            </div>
+            <div className="p-6 bg-[#0d235d] rounded-xl shadow hover:shadow-lg transition">
+              <h3 className="text-xl font-semibold mb-2">Trust</h3>
+              <p>Transparent pricing, honesty, and lasting relationships.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* FOOTER (same as Home) */}
+      {/* FUTURE VISION */}
+      <section className="px-6 py-16 max-w-4xl mx-auto text-center">
+        <h2 className="text-3xl font-bold text-[#FFCC66] mb-6">Our Vision</h2>
+        <p className="text-gray-200 leading-relaxed text-lg">
+          As technology evolves, we’re committed to adapting with it—whether
+          it’s detailing electric vehicles, innovating protective solutions,
+          or staying ahead of industry standards. For us, the future is clean,
+          sustainable, and customer-first.
+        </p>
+      </section>
+
+      {/* FOOTER */}
       <footer className="bg-black text-gray-300 px-6 py-8 border-t border-gray-800">
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center lg:text-left">
           {/* Logo */}
-          <div className="flex flex-col items-center lg:items-start border-b sm:border-b-0 sm:border-r border-gray-700 pb-4 sm:pb-0 sm:pr-6">
-            <Image
-              src="/vynoxlogo.jpg"
-              width={100}
-              height={100}
-              alt="Logo"
-              className="rounded-md"
-            />
+          <div className="flex flex-col items-center lg:items-start">
+            <Image src="/vynoxlogo.jpg" width={100} height={100} alt="Logo" className="rounded-md" />
           </div>
 
           {/* Navigation */}
-          <nav className="flex flex-col gap-2 border-b sm:border-b-0 sm:border-r border-gray-700 pb-4 sm:pb-0 sm:pr-6">
-            <Link href="/about" className="hover:text-[#FFCC66] hover:underline">
-              About
-            </Link>
-            <Link
-              href="/services"
-              className="hover:text-[#FFCC66] hover:underline"
-            >
-              Services
-            </Link>
-            <Link
-              href="/contact"
-              className="hover:text-[#FFCC66] hover:underline"
-            >
-              Contact
-            </Link>
-            <Link
-              href="/giftcards"
-              className="hover:text-[#FFCC66] hover:underline"
-            >
-              Gift Cards
-            </Link>
+          <nav className="flex flex-col gap-2">
+            <Link href="/about" className="hover:text-[#FFCC66] hover:underline">About</Link>
+            <Link href="/services" className="hover:text-[#FFCC66] hover:underline">Services</Link>
+            <Link href="/contact" className="hover:text-[#FFCC66] hover:underline">Contact</Link>
+            <Link href="/giftcards" className="hover:text-[#FFCC66] hover:underline">Gift Cards</Link>
           </nav>
 
           {/* Contact Info */}
-          <div className="flex flex-col gap-2 border-b sm:border-b-0 sm:border-r border-gray-700 pb-4 sm:pb-0 sm:pr-6">
+          <div className="flex flex-col gap-2">
             <p>📞 +1-587-438-7822</p>
-            <Link
-              href="mailto:mohamadalhajj2002@gmail.com"
-              className="hover:text-[#FFCC66] hover:underline"
-            >
+            <Link href="mailto:mohamadalhajj2002@gmail.com" className="hover:text-[#FFCC66] hover:underline">
               📧 mohamadalhajj2002@gmail.com
             </Link>
-            <Link
-              href="https://maps.app.goo.gl/fPGxCvfNLQTd28wRA"
-              target="_blank"
-              className="hover:text-[#FFCC66] hover:underline"
-            >
+            <Link href="https://maps.app.goo.gl/fPGxCvfNLQTd28wRA" target="_blank" className="hover:text-[#FFCC66] hover:underline">
               📍 2806 Ogden Rd SE, Calgary, AB
             </Link>
             <p>🕛 Mon–Fri: 9am–6pm</p>
@@ -186,27 +138,9 @@ export default function AboutPage() {
           <div className="flex flex-col items-center lg:items-start gap-2">
             <h4 className="text-[#FFCC66] font-semibold">Follow Us</h4>
             <div className="flex gap-4 text-lg">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                className="hover:text-[#FFCC66]"
-              >
-                <FaFacebook size={22} />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                className="hover:text-[#FFCC66]"
-              >
-                <FaInstagram size={22} />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                className="hover:text-[#FFCC66]"
-              >
-                <FaLinkedinIn size={22} />
-              </a>
+              <a href="https://facebook.com" target="_blank" className="hover:text-[#FFCC66]"><FaFacebook size={22} /></a>
+              <a href="https://instagram.com" target="_blank" className="hover:text-[#FFCC66]"><FaInstagram size={22} /></a>
+              <a href="https://linkedin.com" target="_blank" className="hover:text-[#FFCC66]"><FaLinkedinIn size={22} /></a>
             </div>
           </div>
         </div>
