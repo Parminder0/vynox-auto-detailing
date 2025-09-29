@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { CiCalendar } from "react-icons/ci";
 import {
   FaFacebook,
@@ -14,9 +15,8 @@ import {
   FaTint,
   FaBrush,
   FaBroom,
-  FaWind,
-  FaPumpSoap,
 } from "react-icons/fa";
+import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 
 function ServiceCard({ title, desc, price, icon }) {
   return (
@@ -28,7 +28,10 @@ function ServiceCard({ title, desc, price, icon }) {
         <p className="text-lg font-bold text-yellow-400">{price}</p>
       </div>
 
-      <Link href="/booking" className="mt-6 block w-full text-center rounded-lg bg-gradient-to-r from-[#FFCC66] to-[#FF7E5F] px-4 py-2 text-white font-medium shadow-[0_0_10px_rgba(255,204,102,0.6)] transition-transform duration-300 hover:scale-105">
+      <Link
+        href="/booking"
+        className="mt-6 block w-full text-center rounded-lg bg-gradient-to-r from-[#FFCC66] to-[#FF7E5F] px-4 py-2 text-white font-medium shadow-[0_0_10px_rgba(255,204,102,0.6)] transition-transform duration-300 hover:scale-105"
+      >
         Book Now
       </Link>
     </div>
@@ -36,7 +39,8 @@ function ServiceCard({ title, desc, price, icon }) {
 }
 
 export default function ServicesPage() {
-  // ✅ Services grouped into categories
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const interiorServices = [
     {
       title: "Interior Cleaning",
@@ -103,8 +107,8 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen w-full bg-[#0a1a4a] flex flex-col text-white">
       {/* HEADER */}
-      <header className="flex items-center justify-between shadow-md px-6 py-3 bg-black">
-        <div className="flex items-center">
+      <header className="flex items-center justify-between shadow-md px-6 py-3 bg-black relative">
+        <div className="flex items-center gap-3">
           <Link href="/">
             <Image
               src="/vynoxlogo.jpg"
@@ -115,7 +119,10 @@ export default function ServicesPage() {
               priority
             />
           </Link>
+          <span className="font-bold text-yellow-400 text-xl">Vynox</span>
         </div>
+
+        {/* Desktop Menu */}
         <nav className="hidden md:flex items-center gap-8">
           <Link href="/auth" className="hover:text-[#FFCC66] hover:underline">
             Log in
@@ -131,6 +138,41 @@ export default function ServicesPage() {
             Book Now
           </button>
         </nav>
+
+        {/* Mobile Menu Toggle */}
+        <button
+          className="md:hidden text-2xl"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          {mobileMenuOpen ? <HiOutlineX /> : <HiOutlineMenu />}
+        </button>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="absolute top-full left-0 w-full bg-black flex flex-col items-center gap-4 py-4 z-50 md:hidden shadow-lg">
+            <Link
+              href="/auth"
+              className="hover:text-[#FFCC66] hover:underline"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Log in
+            </Link>
+            <Link
+              href="/inventory"
+              className="hover:text-[#FFCC66] hover:underline"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Inventory
+            </Link>
+            <button
+              className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#FFCC66] to-[#FF7E5F] px-5 py-2 text-white font-medium shadow-lg transition-transform duration-300 hover:scale-105"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <CiCalendar className="text-xl" />
+              Book Now
+            </button>
+          </div>
+        )}
       </header>
 
       {/* SERVICES */}
@@ -141,7 +183,7 @@ export default function ServicesPage() {
 
         {/* Interior */}
         <h2 className="text-2xl font-bold text-yellow-300 mb-6">Interior</h2>
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mb-12">
+        <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-12">
           {interiorServices.map((service, i) => (
             <ServiceCard key={i} {...service} />
           ))}
@@ -149,7 +191,7 @@ export default function ServicesPage() {
 
         {/* Exterior */}
         <h2 className="text-2xl font-bold text-yellow-300 mb-6">Exterior</h2>
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mb-12">
+        <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-12">
           {exteriorServices.map((service, i) => (
             <ServiceCard key={i} {...service} />
           ))}
@@ -157,7 +199,7 @@ export default function ServicesPage() {
 
         {/* Premium */}
         <h2 className="text-2xl font-bold text-yellow-300 mb-6">Premium</h2>
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {premiumServices.map((service, i) => (
             <ServiceCard key={i} {...service} />
           ))}
@@ -166,74 +208,73 @@ export default function ServicesPage() {
 
       {/* GALLERY / PAST WORK */}
       <section className="bg-[#071133] px-6 py-16">
-  <div className="max-w-6xl mx-auto">
-    <h2 className="text-3xl font-bold text-yellow-400 text-center mb-10">
-      Gallery of Past Work
-    </h2>
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-yellow-400 text-center mb-10">
+            Gallery of Past Work
+          </h2>
 
-    {/* Photos */}
-    <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-      {/* Work Item */}
-      <div className="bg-[#0a194d] p-4 rounded-lg shadow-lg">
-        <div className="flex gap-4 mb-4">
-          <Image
-            src="/images/before detailing-1.jpg"
-            alt="Before Detailing"
-            width={250}
-            height={200}
-            className="rounded-lg object-cover"
-          />
-          <Image
-            src="/images/after detailing-1.jpg"
-            alt="After Detailing"
-            width={250}
-            height={200}
-            className="rounded-lg object-cover"
-          />
-        </div>
-        <h3 className="text-xl font-semibold text-yellow-400 mb-2">
-          Exterior Car Detailing
-        </h3>
-        <p className="text-gray-300 mb-1">
-          Before: Car paint was dull and had scratches.
-        </p>
-        <p className="text-gray-300">
-          After: Scratches removed, paint polished. Worker used new wax for protection.
-        </p>
-      </div>
+          {/* Photos */}
+          <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div className="bg-[#0a194d] p-4 rounded-lg shadow-lg">
+              <div className="flex flex-col md:flex-row gap-4 mb-4">
+                <Image
+                  src="/images/before detailing-1.jpg"
+                  alt="Before Detailing"
+                  width={250}
+                  height={200}
+                  className="rounded-lg object-cover"
+                />
+                <Image
+                  src="/images/after detailing-1.jpg"
+                  alt="After Detailing"
+                  width={250}
+                  height={200}
+                  className="rounded-lg object-cover"
+                />
+              </div>
+              <h3 className="text-xl font-semibold text-yellow-400 mb-2">
+                Exterior Car Detailing
+              </h3>
+              <p className="text-gray-300 mb-1">
+                Before: Car paint was dull and had scratches.
+              </p>
+              <p className="text-gray-300">
+                After: Scratches removed, paint polished. Worker used new wax
+                for protection.
+              </p>
+            </div>
 
-      {/* Repeat for other works */}
-      <div className="bg-[#0a194d] p-4 rounded-lg shadow-lg">
-        <div className="flex gap-4 mb-4">
-          <Image
-            src="/images/before detailing-2.jpg"
-            alt="Before Engine Cleaning"
-            width={250}
-            height={200}
-            className="rounded-lg object-cover"
-          />
-          <Image
-            src="/images/after detailing-2.jpg"
-            alt="After Engine Cleaning"
-            width={250}
-            height={200}
-            className="rounded-lg object-cover"
-          />
-        </div>
-        <h3 className="text-xl font-semibold text-yellow-400 mb-2">
-          Engine Cleaning
-        </h3>
-        <p className="text-gray-300 mb-1">
-          Before: Engine covered in grease and dirt.
-        </p>
-        <p className="text-gray-300">
-          After: Engine cleaned thoroughly. New filters installed.
-        </p>
-      </div>
-    </div>
+            <div className="bg-[#0a194d] p-4 rounded-lg shadow-lg">
+              <div className="flex flex-col md:flex-row gap-4 mb-4">
+                <Image
+                  src="/images/before detailing-2.jpg"
+                  alt="Before Engine Cleaning"
+                  width={250}
+                  height={200}
+                  className="rounded-lg object-cover"
+                />
+                <Image
+                  src="/images/after detailing-2.jpg"
+                  alt="After Engine Cleaning"
+                  width={250}
+                  height={200}
+                  className="rounded-lg object-cover"
+                />
+              </div>
+              <h3 className="text-xl font-semibold text-yellow-400 mb-2">
+                Engine Cleaning
+              </h3>
+              <p className="text-gray-300 mb-1">
+                Before: Engine covered in grease and dirt.
+              </p>
+              <p className="text-gray-300">
+                After: Engine cleaned thoroughly. New filters installed.
+              </p>
+            </div>
+          </div>
 
           {/* Testimonials */}
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             <div className="bg-black text-[#FFCC66] p-6 rounded-lg">
               <p>
                 “Amazing service! My car looks brand new inside and out.”
@@ -246,26 +287,19 @@ export default function ServicesPage() {
             </div>
           </div>
 
-          {/* Video Placeholder */}
-         {/* Video Section */}
-<div className="aspect-video bg-black rounded-lg flex items-center justify-center overflow-hidden">
-  <video
-    className="w-full h-full object-cover"
-    controls
-    autoPlay={false} // set to true if you want autoplay
-  >
-    <source src="/videos/autodetailing.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-</div>
-
+          {/* Video */}
+          <div className="aspect-video bg-black rounded-lg flex items-center justify-center overflow-hidden">
+            <video className="w-full h-full object-cover" controls>
+              <source src="/videos/autodetailing.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </div>
       </section>
 
       {/* FOOTER */}
       <footer className="bg-black text-gray-300 px-6 py-12">
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center lg:text-left items-start">
-          {/* Logo */}
           <div className="flex flex-col items-center lg:items-start">
             <Image
               src="/vynoxlogo.jpg"
@@ -279,7 +313,6 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          {/* Quick Links */}
           <nav className="flex flex-col gap-2">
             <h4 className="text-[#FFCC66] font-semibold mb-2">Quick Links</h4>
             <Link href="/" className="hover:text-[#FFCC66] hover:underline">
@@ -311,7 +344,6 @@ export default function ServicesPage() {
             </Link>
           </nav>
 
-          {/* Contact Info */}
           <div className="flex flex-col gap-2">
             <h4 className="text-[#FFCC66] font-semibold mb-2">Contact</h4>
             <p className="text-sm">📞 +1-587-438-7822</p>
@@ -332,7 +364,6 @@ export default function ServicesPage() {
             <p className="text-sm">🕛 Mon–Fri: 9am–6pm</p>
           </div>
 
-          {/* Social Links */}
           <div className="flex flex-col items-center lg:items-start gap-3">
             <h4 className="text-[#FFCC66] font-semibold">Follow Us</h4>
             <div className="flex gap-5 text-xl">
@@ -366,7 +397,8 @@ export default function ServicesPage() {
 
         <hr className="border-gray-700 my-6" />
         <p className="text-xs text-gray-500 text-center">
-          &copy; {new Date().getFullYear()} Vynox Inventory. All rights reserved.
+          &copy; {new Date().getFullYear()} Vynox Inventory. All rights
+          reserved.
         </p>
       </footer>
     </div>
