@@ -121,19 +121,25 @@ const onSubmit = async ({ firstName, lastName, phone, email, password, confirm, 
     }
 
     const cred = await createUserWithEmailAndPassword(auth, email, password);
+
     try {
       await updateProfile(cred.user, { displayName: `${firstName} ${lastName}`.trim() });
-      // Optionally: write { firstName, lastName, phone } to Firestore here.
+      // (Optional) Save extra user details into Firestore here
     } catch (_) {}
 
     reset();
 
-    // ✅ Show success alert
+    // ✅ Step 1: Show success alert
     alert("🎉 Your account has been created!");
+
+    // ✅ Step 2: Redirect to dashboard
+    router.push("/dashboard");
+
   } catch (err) {
     setError("root", { message: getFriendlyFirebaseMessage(err) });
   }
 };
+
 
 
   /* ------------------------ GOOGLE SIGN UP ------------------------ */
