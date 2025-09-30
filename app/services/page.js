@@ -147,32 +147,52 @@ export default function ServicesPage() {
           {mobileMenuOpen ? <HiOutlineX /> : <HiOutlineMenu />}
         </button>
 
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="absolute top-full left-0 w-full bg-black flex flex-col items-center gap-4 py-4 z-50 md:hidden shadow-lg">
-            <Link
-              href="/auth"
-              className="hover:text-[#FFCC66] hover:underline"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Log in
-            </Link>
-            <Link
-              href="/inventory"
-              className="hover:text-[#FFCC66] hover:underline"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Inventory
-            </Link>
-            <button
-              className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#FFCC66] to-[#FF7E5F] px-5 py-2 text-white font-medium shadow-lg transition-transform duration-300 hover:scale-105"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <CiCalendar className="text-xl" />
-              Book Now
-            </button>
-          </div>
-        )}
+       {/* Mobile Menu */}
+{mobileMenuOpen && (
+  <div className="fixed top-0 right-0 h-full w-3/4 bg-black text-white flex flex-col p-6 z-50 md:hidden shadow-2xl transition-transform duration-300">
+    {/* Header */}
+    <div className="flex justify-between items-center mb-6">
+      <h2 className="text-lg font-semibold">Menu</h2>
+      <button
+        className="text-gray-300 hover:text-white border border-gray-600 rounded-md px-2 py-1"
+        onClick={() => setMobileMenuOpen(false)}
+      >
+        ✕
+      </button>
+    </div>
+
+    {/* Menu Items */}
+    <nav className="flex flex-col gap-4">
+      <Link
+        href="/auth"
+        className="hover:text-[#FFCC66]"
+        onClick={() => setMobileMenuOpen(false)}
+      >
+        Log in
+      </Link>
+
+      <Link
+        href="/inventory"
+        className="hover:text-[#FFCC66]"
+        onClick={() => setMobileMenuOpen(false)}
+      >
+        Inventory
+      </Link>
+
+      {/* Book Now Button - Placed After Inventory */}
+      <button
+        className="mt-2 flex items-center justify-center gap-2 w-full rounded-lg bg-gradient-to-r from-[#FFCC66] to-[#FF7E5F] px-5 py-3 text-white font-medium shadow-lg hover:scale-105 transition-transform duration-300"
+        onClick={() => setMobileMenuOpen(false)}
+      >
+        <CiCalendar className="text-xl" />
+        Book now
+      </button>
+    </nav>
+  </div>
+)}
+
+
+        
       </header>
 
       {/* SERVICES */}
