@@ -25,6 +25,8 @@ const IconDollarSign = (props) => <svg {...props} xmlns="http://www.w3.org/2000/
 const IconChevronLeft = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>;
 const IconUpload = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>;
 const IconRefreshCw = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>;
+const IconBriefcase = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>;
+
 
 // Mock/Placeholder components and data (Replacing Next.js and Firebase)
 const NextImage = ({ src, alt, width, height, className = "" }) => (
@@ -40,7 +42,8 @@ const NextImage = ({ src, alt, width, height, className = "" }) => (
 );
 
 // Mock Auth and Router for standalone environment
-const mockRouter = { push: (path) => console.log(`Navigating to ${path}`) };
+// MOCK NAVIGATION IS NOW CORRECTLY SET TO THE /services PATH
+const mockRouter = { push: (path) => console.log(`[MOCK NAVIGATION] Redirecting to ${path} - In your real app, this should navigate to the external services page!`) };
 
 // --- Mock Data ---
 const MOCK_USER = {
@@ -74,7 +77,7 @@ const MOCK_BOOKINGS = [
     { id: 5, service: "Engine Bay Detailing", vehicle: "Toyota Corolla (DL05CD1234)", date: "March 20, 2024", time: "01:00 PM", cost: 150, status: "Completed", technician: "John Doe", notes: "Engine bay degreased and detailed. All plastic and rubber surfaces conditioned.", rating: 5, invoiceUrl: "#", reportUrl: "#", rebookAvailable: true, feedbackGiven: true },
 ];
 
-// --- Sub-Components for Past Bookings ---
+// --- Sub-Components ---
 
 const RatingStars = ({ rating }) => {
     return (
@@ -136,8 +139,7 @@ const BookingDetail = ({ booking, onBackClick }) => {
         if (userRating > 0) {
             console.log(`Submitting rating ${userRating} for booking ${booking.id}. Feedback: ${feedbackText}`);
             // In a real app, this would update the Firestore document
-            alert(`Thanks for the ${userRating} star rating!`);
-            // The component would typically be re-rendered with updated 'feedbackGiven' status
+            console.log(`Thanks for the ${userRating} star rating!`); 
         }
     };
 
@@ -374,7 +376,7 @@ const BookingList = ({ onDetailClick }) => {
 
 // --- Main Dashboard Content Component ---
 
-const DashboardContent = ({ tab }: { tab: string }) => {
+const DashboardContent = ({ tab, setTab, router }) => { 
     // State to manage the detail view within the bookings tab
     const [selectedBookingId, setSelectedBookingId] = useState(null);
     const selectedBooking = MOCK_BOOKINGS.find(b => b.id === selectedBookingId);
@@ -397,7 +399,10 @@ const DashboardContent = ({ tab }: { tab: string }) => {
             </div>
         );
     }
-
+    
+    // NOTE: The 'services' page content has been removed from here because the Quick Book button
+    // should route externally, not change the dashboard tab state.
+    
     if (tab === 'dashboard') {
         return (
             <>
@@ -449,10 +454,11 @@ const DashboardContent = ({ tab }: { tab: string }) => {
                 </div>
                 </div>
 
-                {/* Quick Book CTA (Orange Button) */}
+                {/* Quick Book CTA (Orange Button) - ***FIXED TO USE MOCK ROUTER.PUSH*** */}
                 <div className="mb-8">
                 <button
-                    onClick={() => console.log("Quick Book clicked")}
+                    // FIX: Use mock router.push to simulate external navigation to the services page
+                    onClick={() => router.push("/services")} 
                     className="w-full md:w-1/2 lg:w-1/3 text-white font-bold text-lg py-4 rounded-xl bg-gradient-to-r from-[#FFCC66] to-[#FF7E5F]
                     shadow-xl shadow-orange-300/50 hover:opacity-90 transition-opacity duration-300"
                 >
@@ -514,14 +520,11 @@ const DashboardContent = ({ tab }: { tab: string }) => {
 
 // --- Main App Component ---
 export default function Dashboard() {
-  const router = mockRouter;
-  // Initialize state with 'bookings' to immediately show the new section for testing
-  const [tab, setTab] = useState(
-    "bookings"
-  );
+  // We define the mockRouter here to simulate Next.js router functionality
+  const router = mockRouter; 
+  const [tab, setTab] = useState("dashboard"); // Start on dashboard
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // Replaced alert with console log and mock function
   const handleLogout = async () => {
     console.log("Logged out successfully");
     // In a real app: await signOut(auth); router.push("/auth");
@@ -530,6 +533,7 @@ export default function Dashboard() {
   const menuItems = useMemo(() => [
     { id: "dashboard", label: "Dashboard", icon: <IconTachometer className="w-5 h-5" /> },
     { id: "bookings", label: "Past Bookings", icon: <IconCalendar className="w-5 h-5" /> },
+    // Removed 'services' from the menu items, as that should be a link outside the dashboard structure
     { id: "reschedule", label: "Reschedule / Cancel", icon: <IconRedo className="w-5 h-5" /> },
     { id: "track", label: "Track Service Status", icon: <IconMapMarker className="w-5 h-5" /> },
     { id: "vehicles", label: "Vehicle Details", icon: <IconCarSide className="w-5 h-5" /> },
@@ -658,7 +662,8 @@ export default function Dashboard() {
             </div>
 
             {/* Content Switcher */}
-            <DashboardContent tab={tab} />
+            {/* Pass router to DashboardContent so the Quick Book button can use it */}
+            <DashboardContent tab={tab} setTab={setTab} router={router} />
           </div>
         </main>
       </div>
