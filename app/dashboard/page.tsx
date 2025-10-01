@@ -17,6 +17,14 @@ const IconLogin = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" 
 const IconTachometer = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 14v4M12 12a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"></path><circle cx="12" cy="12" r="10" stroke="none" fill="none" strokeOpacity="0.1"/><path d="M12 14v4" strokeLinecap="round" strokeLinejoin="round"/></svg>;
 const IconRedo = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>;
 const IconMapMarker = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>;
+const IconFileText = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>;
+const IconStar = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>;
+const IconCheckCircle = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-8.5"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>;
+const IconClock = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>;
+const IconDollarSign = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>;
+const IconChevronLeft = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>;
+const IconUpload = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>;
+const IconRefreshCw = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>;
 
 // Mock/Placeholder components and data (Replacing Next.js and Firebase)
 const NextImage = ({ src, alt, width, height, className = "" }) => (
@@ -32,11 +40,9 @@ const NextImage = ({ src, alt, width, height, className = "" }) => (
 );
 
 // Mock Auth and Router for standalone environment
-const mockAuth = {};
 const mockRouter = { push: (path) => console.log(`Navigating to ${path}`) };
 
-
-// Mock Data (based on the Figma design)
+// --- Mock Data ---
 const MOCK_USER = {
   name: "Emily Johnson",
   email: "emily@example.com",
@@ -60,98 +66,426 @@ const MOCK_USER = {
   ],
 };
 
+const MOCK_BOOKINGS = [
+    { id: 1, service: "Full Car Detailing", vehicle: "Tesla Model 3 (PB12AB3456)", date: "August 30, 2024", time: "10:00 AM", cost: 450, status: "Completed", technician: "John Doe", notes: "Interior deep cleaned. Found minor scratch on rear bumper, polished it out.", rating: 5, invoiceUrl: "#", reportUrl: "#", rebookAvailable: true, feedbackGiven: true },
+    { id: 2, service: "Standard Car Wash", vehicle: "Toyota Corolla (DL05CD1234)", date: "July 15, 2024", time: "02:30 PM", cost: 50, status: "Completed", technician: "Jane Smith", notes: "Standard wash and vacuum. Windows cleaned. Tires dressed.", rating: 4, invoiceUrl: "#", reportUrl: "#", rebookAvailable: true, feedbackGiven: true },
+    { id: 3, service: "Ceramic Coating", vehicle: "Tesla Model 3 (PB12AB3456)", date: "May 01, 2024", time: "09:00 AM", cost: 1200, status: "Completed", technician: "Ethan Hunt", notes: "Three layers of professional ceramic coating applied. Curing time is 48 hours.", rating: 0, invoiceUrl: "#", reportUrl: "#", rebookAvailable: false, feedbackGiven: false },
+    { id: 4, service: "Interior Detailing", vehicle: "Honda Civic (HR26EF5678)", date: "April 10, 2024", time: "11:30 AM", cost: 250, status: "Cancelled", technician: null, notes: "Cancellation requested by customer 24 hours prior to booking time.", rating: null, invoiceUrl: "#", reportUrl: "#", rebookAvailable: true, feedbackGiven: true },
+    { id: 5, service: "Engine Bay Detailing", vehicle: "Toyota Corolla (DL05CD1234)", date: "March 20, 2024", time: "01:00 PM", cost: 150, status: "Completed", technician: "John Doe", notes: "Engine bay degreased and detailed. All plastic and rubber surfaces conditioned.", rating: 5, invoiceUrl: "#", reportUrl: "#", rebookAvailable: true, feedbackGiven: true },
+];
 
-// Component to render content for the selected tab
-const DashboardContent = ({ tab }: { tab: string }) => {
-  // --- Dashboard Overview Tab (Matching the Figma design) ---
-  if (tab === 'dashboard') {
+// --- Sub-Components for Past Bookings ---
+
+const RatingStars = ({ rating }) => {
     return (
-      <>
-        {/* Cards Row (3 columns on desktop, 1 on mobile) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {/* 1. Upcoming Booking Card */}
-          <div className="bg-white rounded-xl shadow-lg p-6 border-t-4 border-[#FFCC66]">
-            <h3 className="text-sm font-semibold text-slate-500 mb-1 uppercase tracking-wider">Upcoming Booking</h3>
-            <p className="text-xl font-bold text-[#0B1E3F] mb-1">{MOCK_USER.upcomingBooking.service}</p>
-            <p className="text-sm text-slate-500">{MOCK_USER.upcomingBooking.date}</p>
-            <p className="mt-2 text-md font-bold text-emerald-600">
-              {MOCK_USER.upcomingBooking.status}
-            </p>
-          </div>
-
-          {/* 2. Saved Vehicles Card */}
-          <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between">
-            <div>
-              <h3 className="text-sm font-semibold text-slate-500 mb-2 uppercase tracking-wider">Saved Vehicles</h3>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#0B1E3F] flex items-center justify-center text-white text-xl">
-                  <IconCarSide className="w-5 h-5 fill-white" />
-                </div>
-                <div>
-                  <div className="font-semibold text-md text-[#0B1E3F]">{MOCK_USER.savedVehicles.make}</div>
-                  <div className="text-xs text-slate-500">{MOCK_USER.savedVehicles.license}</div>
-                </div>
-              </div>
-            </div>
-            <button className="mt-4 px-4 py-2 rounded-full border border-slate-300 text-sm font-medium text-[#0B1E3F] hover:bg-slate-50 transition self-start">
-              Manage
-            </button>
-          </div>
-
-          {/* 3. Favorite Services Card */}
-          <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between">
-            <div>
-              <h3 className="text-sm font-semibold text-slate-500 mb-2 uppercase tracking-wider">Favorite Services</h3>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-500 text-xl">
-                  <IconHeart className="w-5 h-5 fill-red-500 stroke-red-500" />
-                </div>
-                <div className="font-semibold text-md text-[#0B1E3F]">{MOCK_USER.favoriteService.name}</div>
-              </div>
-            </div>
-            <button className="mt-4 px-4 py-2 rounded-full border border-slate-300 text-sm font-medium text-[#0B1E3F] hover:bg-slate-50 transition self-start">
-              View
-            </button>
-          </div>
+        <div className="flex gap-0.5">
+            {[1, 2, 3, 4, 5].map((star) => (
+                <IconStar
+                    key={star}
+                    className={`w-5 h-5 transition-colors ${
+                        rating >= star ? 'fill-yellow-400 stroke-yellow-500' : 'fill-gray-200 stroke-gray-400'
+                    }`}
+                />
+            ))}
         </div>
-
-        {/* Quick Book CTA (Orange Button) */}
-        <div className="mb-8">
-          <button
-            onClick={() => console.log("Quick Book clicked")}
-            className="w-full md:w-1/2 lg:w-1/3 text-white font-bold text-lg py-4 rounded-xl bg-gradient-to-r from-[#FFCC66] to-[#FF7E5F]
-              shadow-xl shadow-orange-300/50 hover:opacity-90 transition-opacity duration-300"
-          >
-            <span className="flex items-center justify-center gap-3">
-              <IconCalendar className="w-6 h-6 fill-white stroke-white" />
-              Quick Book
-            </span>
-          </button>
-        </div>
-
-        {/* Recent Activity Section */}
-        <div className="bg-white rounded-xl shadow-lg p-6">
-          <h3 className="text-xl font-bold mb-6 text-[#0B1E3F]">Recent Activity</h3>
-
-          {/* Timeline Style */}
-          <div className="relative pl-6">
-            {/* vertical line */}
-            <div className="absolute left-[13px] top-0 bottom-0 w-px bg-slate-200" />
-            <ul className="space-y-6">
-              {MOCK_USER.recentActivity.map((activity, index) => (
-                <li key={index} className="relative pl-6">
-                  {/* circle marker */}
-                  <div className={`absolute -left-[5px] top-1 w-3 h-3 rounded-full ${activity.isLatest ? 'bg-[#FFCC66]' : 'bg-slate-400'} ring-4 ring-white`} />
-                  <div className="font-semibold text-slate-800">{activity.type}</div>
-                  <div className="text-xs text-slate-500 mt-0.5">{activity.date}</div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </>
     );
-  }
+};
+
+const BookingCard = ({ booking, onDetailClick }) => {
+    const isCompleted = booking.status === 'Completed';
+
+    return (
+        <div className="bg-white rounded-xl shadow-lg p-5 border-l-4 border-[#0B1E3F] hover:shadow-xl transition duration-300 flex flex-col sm:flex-row justify-between">
+            <div className="flex flex-col gap-1 mb-4 sm:mb-0">
+                <h3 className="text-xl font-bold text-[#0B1E3F]">{booking.service}</h3>
+                <p className="text-sm text-slate-500">{booking.vehicle}</p>
+                <div className={`text-sm font-semibold mt-1 ${isCompleted ? 'text-emerald-600' : 'text-red-500'}`}>
+                    <span className="flex items-center gap-1">
+                        {isCompleted ? <IconCheckCircle className="w-4 h-4" /> : <IconX className="w-4 h-4"/>}
+                        {booking.status}
+                    </span>
+                </div>
+            </div>
+
+            <div className="flex flex-col justify-between items-start sm:items-end gap-2">
+                <div className="text-right">
+                    <p className="font-bold text-lg text-[#FF7E5F]">
+                        <IconDollarSign className="inline w-4 h-4 mr-0.5" />{booking.cost.toFixed(2)}
+                    </p>
+                    <p className="text-xs text-slate-500 flex items-center gap-1 mt-1">
+                        <IconCalendar className="w-3 h-3" /> {booking.date} @ {booking.time}
+                    </p>
+                </div>
+                <button
+                    onClick={() => onDetailClick(booking.id)}
+                    className="mt-2 px-4 py-2 text-sm font-medium text-white bg-[#0B1E3F] rounded-full hover:bg-[#07172F] transition duration-200"
+                >
+                    View Details
+                </button>
+            </div>
+        </div>
+    );
+};
+
+const BookingDetail = ({ booking, onBackClick }) => {
+    const [userRating, setUserRating] = useState(booking.rating || 0);
+    const [feedbackText, setFeedbackText] = useState("");
+    const isCompleted = booking.status === 'Completed';
+
+    const handleRatingSubmit = () => {
+        if (userRating > 0) {
+            console.log(`Submitting rating ${userRating} for booking ${booking.id}. Feedback: ${feedbackText}`);
+            // In a real app, this would update the Firestore document
+            alert(`Thanks for the ${userRating} star rating!`);
+            // The component would typically be re-rendered with updated 'feedbackGiven' status
+        }
+    };
+
+    const isFeedbackPeriodOpen = isCompleted && !booking.feedbackGiven && new Date(booking.date) > new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+
+    return (
+        <div className="bg-white rounded-xl shadow-lg p-6 space-y-8">
+            <button onClick={onBackClick} className="flex items-center text-[#0B1E3F] hover:text-[#FFCC66] font-medium transition">
+                <IconChevronLeft className="w-5 h-5 mr-1" /> Back to List
+            </button>
+
+            <header className="flex flex-col md:flex-row md:justify-between md:items-start border-b pb-4">
+                <div>
+                    <h2 className="text-3xl font-bold text-[#0B1E3F]">{booking.service}</h2>
+                    <p className="text-lg text-slate-600 mt-1">{booking.vehicle}</p>
+                    <div className={`text-md font-semibold mt-2 ${isCompleted ? 'text-emerald-600' : 'text-red-500'}`}>
+                        Status: {booking.status}
+                    </div>
+                </div>
+                <div className="mt-4 md:mt-0 flex flex-col items-start md:items-end gap-2">
+                    <p className="text-2xl font-extrabold text-[#FF7E5F]">
+                        <IconDollarSign className="inline w-5 h-5 mr-1" />{booking.cost.toFixed(2)}
+                    </p>
+                    <div className="text-sm text-slate-500 flex flex-col items-start md:items-end">
+                        <span className="flex items-center gap-1"><IconCalendar className="w-4 h-4" /> Date: {booking.date}</span>
+                        <span className="flex items-center gap-1"><IconClock className="w-4 h-4" /> Time: {booking.time}</span>
+                    </div>
+                </div>
+            </header>
+
+            {/* Action Section: Rebook / Reschedule */}
+            <section className="p-4 bg-slate-50 rounded-lg flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p className="text-md font-medium text-[#0B1E3F]">Ready to keep your vehicle looking great?</p>
+                <div className="flex gap-3">
+                    {booking.rebookAvailable && (
+                        <button
+                            onClick={() => console.log(`Quick Rebook for service ${booking.id}`)}
+                            className="px-4 py-2 text-sm font-semibold text-white bg-green-500 rounded-full hover:bg-green-600 transition shadow-md"
+                        >
+                            <span className="flex items-center gap-2"><IconRefreshCw className="w-4 h-4" /> Rebook This Service</span>
+                        </button>
+                    )}
+                    {/* Assuming this is a completed booking, otherwise show reschedule/cancel CTA here */}
+                </div>
+            </section>
+
+            {/* Service Documentation & Notes */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Technician Notes */}
+                <div className="p-4 border rounded-lg">
+                    <h3 className="text-xl font-semibold mb-3 text-[#0B1E3F]">Technician Notes</h3>
+                    <p className="text-slate-700 italic">
+                        {booking.notes || "No specific notes recorded for this service."}
+                    </p>
+                    {booking.technician && (
+                        <p className="text-xs text-slate-500 mt-2">Served by: **{booking.technician}**</p>
+                    )}
+                </div>
+
+                {/* Documents and Downloads */}
+                <div className="p-4 border rounded-lg">
+                    <h3 className="text-xl font-semibold mb-3 text-[#0B1E3F]">Documents</h3>
+                    <div className="space-y-3">
+                        {['Invoice', 'Service Report'].map((docName, index) => (
+                            <a
+                                key={index}
+                                href={docName === 'Invoice' ? booking.invoiceUrl : booking.reportUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-between p-3 border rounded-lg hover:bg-slate-50 transition"
+                            >
+                                <span className="flex items-center gap-2 text-slate-700">
+                                    <IconFileText className="w-5 h-5 text-[#0B1E3F]" />
+                                    {docName} ({booking.status})
+                                </span>
+                                <IconUpload className="w-5 h-5 text-blue-500" />
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Rating/Feedback Section */}
+            {isCompleted && (
+                <section className="p-6 bg-[#0B1E3F]/5 rounded-xl border border-dashed border-[#0B1E3F]/20">
+                    <h3 className="text-xl font-bold mb-4 text-[#0B1E3F]">Your Feedback</h3>
+                    
+                    {booking.feedbackGiven ? (
+                        <div className="flex items-center gap-3 text-lg font-medium text-emerald-700">
+                            <RatingStars rating={booking.rating} />
+                            <span>Thank you! You rated this service {booking.rating} stars.</span>
+                        </div>
+                    ) : isFeedbackPeriodOpen ? (
+                        <div className="space-y-4">
+                            <p className="text-slate-600">Rate your experience to help us improve:</p>
+                            <div className="flex gap-2">
+                                <RatingStars rating={userRating} />
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                    <button
+                                        key={star}
+                                        onClick={() => setUserRating(star)}
+                                        aria-label={`Rate ${star} stars`}
+                                    >
+                                        <IconStar
+                                            className={`w-8 h-8 transition-all ${userRating >= star ? 'fill-[#FFCC66] stroke-[#FF7E5F] transform scale-105' : 'fill-gray-200 stroke-gray-400 hover:fill-yellow-300'}`}
+                                        />
+                                    </button>
+                                ))}
+                            </div>
+                            <textarea
+                                value={feedbackText}
+                                onChange={(e) => setFeedbackText(e.target.value)}
+                                placeholder="Optional: Share additional comments about your service..."
+                                rows={3}
+                                className="w-full p-3 border rounded-lg focus:border-[#FFCC66] focus:ring focus:ring-[#FFCC66]/50"
+                            />
+                            <button
+                                onClick={handleRatingSubmit}
+                                disabled={userRating === 0}
+                                className="w-full sm:w-auto px-6 py-2 bg-[#FFCC66] text-[#0B1E3F] font-bold rounded-full disabled:opacity-50 hover:opacity-90 transition"
+                            >
+                                Submit Rating & Feedback
+                            </button>
+                        </div>
+                    ) : (
+                        <p className="text-slate-500 italic">Feedback period for this older booking has closed.</p>
+                    )}
+                </section>
+            )}
+        </div>
+    );
+};
+
+
+const BookingList = ({ onDetailClick }) => {
+    const [searchQuery, setSearchQuery] = useState("");
+    const [filterVehicle, setFilterVehicle] = useState("All");
+    const [sortBy, setSortBy] = useState("dateDesc"); // dateDesc, dateAsc, costDesc, costAsc
+
+    const uniqueVehicles = useMemo(() => {
+        const vehicles = MOCK_BOOKINGS.map(b => b.vehicle);
+        return ["All", ...new Set(vehicles)];
+    }, []);
+
+    const filteredAndSortedBookings = useMemo(() => {
+        let list = MOCK_BOOKINGS.filter(booking => {
+            const matchesSearch = booking.service.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                  booking.vehicle.toLowerCase().includes(searchQuery.toLowerCase());
+            const matchesVehicle = filterVehicle === "All" || booking.vehicle === filterVehicle;
+            return matchesSearch && matchesVehicle;
+        });
+
+        // Sorting in memory (since orderBy is discouraged in firestore)
+        list.sort((a, b) => {
+            switch (sortBy) {
+                case 'dateDesc': // Newest first
+                    return new Date(b.date).getTime() - new Date(a.date).getTime();
+                case 'dateAsc': // Oldest first
+                    return new Date(a.date).getTime() - new Date(b.date).getTime();
+                case 'costDesc': // Highest cost first
+                    return b.cost - a.cost;
+                case 'costAsc': // Lowest cost first
+                    return a.cost - b.cost;
+                default:
+                    return 0;
+            }
+        });
+
+        return list;
+    }, [searchQuery, filterVehicle, sortBy]);
+
+    return (
+        <div className="space-y-6">
+            <h2 className="text-3xl font-extrabold text-[#0B1E3F]">Past Bookings Archive</h2>
+
+            {/* Search and Filters Row - Responsive */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4 bg-white rounded-xl shadow-md border-t-2 border-[#FFCC66]">
+                {/* Search */}
+                <div className="col-span-1 sm:col-span-2 relative">
+                    <IconSearch className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
+                    <input
+                        type="text"
+                        placeholder="Search by Service or Vehicle..."
+                        className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-full focus:ring-1 focus:ring-[#FFCC66] focus:border-[#FFCC66] transition"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                </div>
+
+                {/* Vehicle Filter */}
+                <div>
+                    <select
+                        className="w-full p-2.5 border border-slate-300 rounded-full bg-white text-slate-700 appearance-none focus:ring-1 focus:ring-[#FFCC66] focus:border-[#FFCC66] transition"
+                        value={filterVehicle}
+                        onChange={(e) => setFilterVehicle(e.target.value)}
+                    >
+                        {uniqueVehicles.map(v => (
+                            <option key={v} value={v}>Vehicle: {v}</option>
+                        ))}
+                    </select>
+                </div>
+
+                {/* Sort By */}
+                <div>
+                    <select
+                        className="w-full p-2.5 border border-slate-300 rounded-full bg-white text-slate-700 appearance-none focus:ring-1 focus:ring-[#FFCC66] focus:border-[#FFCC66] transition"
+                        value={sortBy}
+                        onChange={(e) => setSortBy(e.target.value)}
+                    >
+                        <option value="dateDesc">Sort: Newest First</option>
+                        <option value="dateAsc">Sort: Oldest First</option>
+                        <option value="costDesc">Sort: Price (High to Low)</option>
+                        <option value="costAsc">Sort: Price (Low to High)</option>
+                    </select>
+                </div>
+            </div>
+
+            {/* Booking Results */}
+            <div className="space-y-4">
+                {filteredAndSortedBookings.length > 0 ? (
+                    filteredAndSortedBookings.map(booking => (
+                        <BookingCard key={booking.id} booking={booking} onDetailClick={onDetailClick} />
+                    ))
+                ) : (
+                    <div className="p-10 text-center text-slate-500 bg-white rounded-xl shadow-lg">
+                        No bookings found matching your criteria.
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+};
+
+
+// --- Main Dashboard Content Component ---
+
+const DashboardContent = ({ tab }: { tab: string }) => {
+    // State to manage the detail view within the bookings tab
+    const [selectedBookingId, setSelectedBookingId] = useState(null);
+    const selectedBooking = MOCK_BOOKINGS.find(b => b.id === selectedBookingId);
+
+    // Function to handle moving to detail view
+    const handleDetailClick = (id) => setSelectedBookingId(id);
+    // Function to handle moving back to list view
+    const handleBackClick = () => setSelectedBookingId(null);
+
+    // --- Content Switcher Logic ---
+
+    if (tab === 'bookings') {
+        return (
+            <div className="p-0">
+                {selectedBooking ? (
+                    <BookingDetail booking={selectedBooking} onBackClick={handleBackClick} />
+                ) : (
+                    <BookingList onDetailClick={handleDetailClick} />
+                )}
+            </div>
+        );
+    }
+
+    if (tab === 'dashboard') {
+        return (
+            <>
+                {/* Cards Row (3 columns on desktop, 1 on mobile) */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                {/* 1. Upcoming Booking Card */}
+                <div className="bg-white rounded-xl shadow-lg p-6 border-t-4 border-[#FFCC66]">
+                    <h3 className="text-sm font-semibold text-slate-500 mb-1 uppercase tracking-wider">Upcoming Booking</h3>
+                    <p className="text-xl font-bold text-[#0B1E3F] mb-1">{MOCK_USER.upcomingBooking.service}</p>
+                    <p className="text-sm text-slate-500">{MOCK_USER.upcomingBooking.date}</p>
+                    <p className="mt-2 text-md font-bold text-emerald-600">
+                    {MOCK_USER.upcomingBooking.status}
+                    </p>
+                </div>
+
+                {/* 2. Saved Vehicles Card */}
+                <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between">
+                    <div>
+                    <h3 className="text-sm font-semibold text-slate-500 mb-2 uppercase tracking-wider">Saved Vehicles</h3>
+                    <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-[#0B1E3F] flex items-center justify-center text-white text-xl">
+                        <IconCarSide className="w-5 h-5 fill-white" />
+                        </div>
+                        <div>
+                        <div className="font-semibold text-md text-[#0B1E3F]">{MOCK_USER.savedVehicles.make}</div>
+                        <div className="text-xs text-slate-500">{MOCK_USER.savedVehicles.license}</div>
+                        </div>
+                    </div>
+                    </div>
+                    <button className="mt-4 px-4 py-2 rounded-full border border-slate-300 text-sm font-medium text-[#0B1E3F] hover:bg-slate-50 transition self-start">
+                    Manage
+                    </button>
+                </div>
+
+                {/* 3. Favorite Services Card */}
+                <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between">
+                    <div>
+                    <h3 className="text-sm font-semibold text-slate-500 mb-2 uppercase tracking-wider">Favorite Services</h3>
+                    <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-500 text-xl">
+                        <IconHeart className="w-5 h-5 fill-red-500 stroke-red-500" />
+                        </div>
+                        <div className="font-semibold text-md text-[#0B1E3F]">{MOCK_USER.favoriteService.name}</div>
+                    </div>
+                    </div>
+                    <button className="mt-4 px-4 py-2 rounded-full border border-slate-300 text-sm font-medium text-[#0B1E3F] hover:bg-slate-50 transition self-start">
+                    View
+                    </button>
+                </div>
+                </div>
+
+                {/* Quick Book CTA (Orange Button) */}
+                <div className="mb-8">
+                <button
+                    onClick={() => console.log("Quick Book clicked")}
+                    className="w-full md:w-1/2 lg:w-1/3 text-white font-bold text-lg py-4 rounded-xl bg-gradient-to-r from-[#FFCC66] to-[#FF7E5F]
+                    shadow-xl shadow-orange-300/50 hover:opacity-90 transition-opacity duration-300"
+                >
+                    <span className="flex items-center justify-center gap-3">
+                    <IconCalendar className="w-6 h-6 fill-white stroke-white" />
+                    Quick Book
+                    </span>
+                </button>
+                </div>
+
+                {/* Recent Activity Section */}
+                <div className="bg-white rounded-xl shadow-lg p-6">
+                <h3 className="text-xl font-bold mb-6 text-[#0B1E3F]">Recent Activity</h3>
+
+                {/* Timeline Style */}
+                <div className="relative pl-6">
+                    {/* vertical line */}
+                    <div className="absolute left-[13px] top-0 bottom-0 w-px bg-slate-200" />
+                    <ul className="space-y-6">
+                    {MOCK_USER.recentActivity.map((activity, index) => (
+                        <li key={index} className="relative pl-6">
+                        {/* circle marker */}
+                        <div className={`absolute -left-[5px] top-1 w-3 h-3 rounded-full ${activity.isLatest ? 'bg-[#FFCC66]' : 'bg-slate-400'} ring-4 ring-white`} />
+                        <div className="font-semibold text-slate-800">{activity.type}</div>
+                        <div className="text-xs text-slate-500 mt-0.5">{activity.date}</div>
+                        </li>
+                    ))}
+                    </ul>
+                </div>
+                </div>
+            </>
+        );
+    }
 
   // --- Placeholder Content for Other Flow Tabs ---
   return (
@@ -165,7 +499,6 @@ const DashboardContent = ({ tab }: { tab: string }) => {
       <div className="mt-6 p-6 border-2 border-dashed border-slate-300 rounded-lg text-center text-slate-500">
         <p className="mb-2">Implementing all features from the flow diagram here:</p>
         <ul className="list-disc list-inside text-left inline-block mt-4 space-y-1 text-sm">
-            {tab === "bookings" && <li>View detailed service history, PDF reports, and provide feedback on past bookings.</li>}
             {tab === "reschedule" && <li>Implement the cancellation policy, reschedule options, and real-time availability.</li>}
             {tab === "track" && <li>Display the interactive map and service history tracking for active services.</li>}
             {tab === "vehicles" && <li>Allow users to manage vehicle details (VIN, make, model) and set up maintenance reminders.</li>}
@@ -179,11 +512,12 @@ const DashboardContent = ({ tab }: { tab: string }) => {
 };
 
 
+// --- Main App Component ---
 export default function Dashboard() {
   const router = mockRouter;
-  // Initialize state with 'dashboard' to match the flow diagram's starting point
+  // Initialize state with 'bookings' to immediately show the new section for testing
   const [tab, setTab] = useState(
-    "dashboard"
+    "bookings"
   );
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
