@@ -135,12 +135,23 @@ export default function LoginPage() {
       setResetMsg("");
       clearErrors("root");
       await signInWithEmailAndPassword(auth, email, password);
-      reset();
-      router.push("/");
-    } catch (err) {
-      setError("root", { message: getFriendlyFirebaseMessage(err) });
-    }
-  };
+
+         // ✅ Store user info in localStorage
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        name: cred.user.displayName || "User",
+        email: cred.user.email,
+        uid: cred.user.uid,
+      })
+    );
+
+    reset();
+    router.push("/dashboard"); // redirect to dashboard
+  } catch (err) {
+    setError("root", { message: getFriendlyFirebaseMessage(err) });
+  }
+};
 
   const handleForgotPassword = async () => {
     const email = (getValues("email") || "").trim();
@@ -168,12 +179,23 @@ export default function LoginPage() {
       clearErrors("root");
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
-       router.push("/");
-    } catch (err) {
-      setError("root", { message: getFriendlyFirebaseMessage(err) });
-    }
-  };
+        const user = result.user;
 
+    // ✅ Store user info in localStorage
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        name: user.displayName || "User",
+        email: user.email,
+        uid: user.uid,
+      })
+    );
+
+    router.push("/dashboard"); // redirect to dashboard
+  } catch (err) {
+    setError("root", { message: getFriendlyFirebaseMessage(err) });
+  }
+};
   return (
     <div className="min-h-screen w-full bg-[#1c2e5c] overflow-x-hidden flex flex-col">
       {/* NAVBAR & HEADER */}
