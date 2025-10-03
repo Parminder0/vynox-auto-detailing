@@ -1,5 +1,5 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 import React, { useState, useMemo } from "react";
 // We replace external icon libraries with simple inline SVGs and emojis
 // to ensure the single-file component compiles successfully.
@@ -521,13 +521,13 @@ const DashboardContent = ({ tab, setTab, router }) => {
 // --- Main App Component ---
 export default function Dashboard() {
   // We define the mockRouter here to simulate Next.js router functionality
-  const router = mockRouter; 
+   const router = useRouter();
   const [tab, setTab] = useState("dashboard"); // Start on dashboard
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const handleLogout = async () => {
-    console.log("Logged out successfully");
-    // In a real app: await signOut(auth); router.push("/auth");
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // clear auth info
+    router.push("/auth"); // redirect to login
   };
 
   const menuItems = useMemo(() => [
