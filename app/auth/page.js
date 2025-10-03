@@ -134,20 +134,21 @@ export default function LoginPage() {
     try {
       setResetMsg("");
       clearErrors("root");
-      await signInWithEmailAndPassword(auth, email, password);
+     const cred = await signInWithEmailAndPassword(auth, email, password);
 
-         // ✅ Store user info in localStorage
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        name: cred.user.displayName || "User",
-        email: cred.user.email,
-        uid: cred.user.uid,
-      })
-    );
+// Save user info in localStorage
+localStorage.setItem(
+  "user",
+  JSON.stringify({
+    name: cred.user.displayName || "User",
+    email: cred.user.email,
+    uid: cred.user.uid,
+  })
+);
 
-    reset();
-    router.push("/dashboard"); // redirect to dashboard
+reset();
+router.push("/dashboard");
+// redirect to dashboard
   } catch (err) {
     setError("root", { message: getFriendlyFirebaseMessage(err) });
   }
@@ -178,20 +179,20 @@ export default function LoginPage() {
     try {
       clearErrors("root");
       const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
-        const user = result.user;
+    const result = await signInWithPopup(auth, provider);
+const user = result.user;
 
-    // ✅ Store user info in localStorage
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        name: user.displayName || "User",
-        email: user.email,
-        uid: user.uid,
-      })
-    );
+localStorage.setItem(
+  "user",
+  JSON.stringify({
+    name: user.displayName || "User",
+    email: user.email,
+    uid: user.uid,
+  })
+);
 
-    router.push("/dashboard"); // redirect to dashboard
+router.push("/dashboard");
+
   } catch (err) {
     setError("root", { message: getFriendlyFirebaseMessage(err) });
   }
