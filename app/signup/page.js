@@ -105,8 +105,7 @@ export default function SignUpPage() {
       transition: "background-color 9999s ease-in-out 0s",
     },
   };
-
-/* ------------------------ SIGN UP SUBMIT ------------------------ */
+//handle form submit
 const onSubmit = async ({ firstName, lastName, phone, email, password, confirm, agree }) => {
   try {
     clearErrors("root");
@@ -124,15 +123,21 @@ const onSubmit = async ({ firstName, lastName, phone, email, password, confirm, 
 
     try {
       await updateProfile(cred.user, { displayName: `${firstName} ${lastName}`.trim() });
-      // (Optional) Save extra user details into Firestore here
+
+      // ✅ Store user info in localStorage
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          name: `${firstName} ${lastName}`.trim(),
+          email: cred.user.email,
+          uid: cred.user.uid,
+        })
+      );
     } catch (_) {}
 
     reset();
 
-    // ✅ Step 1: Show success alert
     alert("🎉 Your account has been created!");
-
-    // ✅ Step 2: Redirect to dashboard
     router.push("/dashboard");
 
   } catch (err) {
@@ -140,19 +145,30 @@ const onSubmit = async ({ firstName, lastName, phone, email, password, confirm, 
   }
 };
 
+//handle google auth
+ const handleGoogleAuth = async () => {
+  try {
+    clearErrors("root");
+    const provider = new GoogleAuthProvider();
+    const result = await signInWithPopup(auth, provider);
 
+    const user = result.user;
 
-  /* ------------------------ GOOGLE SIGN UP ------------------------ */
-  const handleGoogleAuth = async () => {
-    try {
-      clearErrors("root");
-      const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
-      router.push("/dashboard");
-    } catch (err) {
-      setError("root", { message: getFriendlyFirebaseMessage(err) });
-    }
-  };
+    // Store user info in localStorage
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        name: user.displayName || "User",
+        email: user.email,
+        uid: user.uid,
+      })
+    );
+
+    router.push("/dashboard");
+  } catch (err) {
+    setError("root", { message: getFriendlyFirebaseMessage(err) });
+  }
+};
 
   return (
     <div className="min-h-screen w-full bg-[#1c2e5c] overflow-x-hidden flex flex-col">
