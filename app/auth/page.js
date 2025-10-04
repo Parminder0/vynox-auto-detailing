@@ -131,28 +131,30 @@ export default function LoginPage() {
   };
 
   const onSubmit = async ({ email, password }) => {
-    try {
-      setResetMsg("");
-      clearErrors("root");
-     const cred = await signInWithEmailAndPassword(auth, email, password);
+  try {
+    setResetMsg("");
+    clearErrors("root");
+    const cred = await signInWithEmailAndPassword(auth, email, password);
 
-// Save user info in localStorage
-localStorage.setItem(
-  "user",
-  JSON.stringify({
-    name: cred.user.displayName || "User",
-    email: cred.user.email,
-    uid: cred.user.uid,
-  })
-);
+    // Fetch user from localStorage if exists
+    const existingUser = JSON.parse(localStorage.getItem("user") || "{}");
 
-reset();
-router.push("/dashboard");
-// redirect to dashboard
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        name: existingUser?.name || cred.user.displayName || "User",
+        email: cred.user.email,
+        uid: cred.user.uid,
+      })
+    );
+
+    reset();
+    router.push("/dashboard");
   } catch (err) {
     setError("root", { message: getFriendlyFirebaseMessage(err) });
   }
 };
+
 
   const handleForgotPassword = async () => {
     const email = (getValues("email") || "").trim();
@@ -176,27 +178,27 @@ router.push("/dashboard");
   };
 
   const handleGoogleAuth = async () => {
-    try {
-      clearErrors("root");
-      const provider = new GoogleAuthProvider();
+  try {
+    clearErrors("root");
+    const provider = new GoogleAuthProvider();
     const result = await signInWithPopup(auth, provider);
-const user = result.user;
+    const user = result.user;
 
-localStorage.setItem(
-  "user",
-  JSON.stringify({
-    name: user.displayName || "User",
-    email: user.email,
-    uid: user.uid,
-  })
-);
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        name: user.displayName || "User",
+        email: user.email,
+        uid: user.uid,
+      })
+    );
 
-router.push("/dashboard");
-
+    router.push("/dashboard");
   } catch (err) {
     setError("root", { message: getFriendlyFirebaseMessage(err) });
   }
 };
+
   return (
     <div className="min-h-screen w-full bg-[#1c2e5c] overflow-x-hidden flex flex-col">
       {/* NAVBAR & HEADER */}
