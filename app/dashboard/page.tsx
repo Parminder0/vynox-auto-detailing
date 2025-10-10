@@ -1,5 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
+import RescheduleCancel from "./RescheduleCancel";
+
 import { signOut } from "firebase/auth";
 import { auth } from "@/firebase/firebase";
 import Image from "next/image";
@@ -405,8 +407,7 @@ const DashboardContent = ({ tab, setTab, router }) => {
         );
     }
     
-    // NOTE: The 'services' page content has been removed from here because the Quick Book button
-    // should route externally, not change the dashboard tab state.
+
     
     if (tab === 'dashboard') {
         return (
@@ -700,7 +701,16 @@ export default function Dashboard() {
             </div>
 
             {/* Dashboard Content */}
-            <DashboardContent tab={tab} setTab={setTab} router={router} />
+
+<div className="w-full">
+  {tab === "reschedule" ? (
+    <RescheduleCancel />
+  ) : (
+    <DashboardContent tab={tab} setTab={setTab} router={router} />
+  )}
+</div>
+
+
           </div>
         </main>
       </div>
