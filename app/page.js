@@ -48,47 +48,73 @@ export default function HomePage() {
             Contact
           </Link>
         </nav>
+{/* Put this part INSIDE your <header> where you want the hamburger icon to appear */}
+<button
+  className="md:hidden text-white z-50 p-2 flex items-center justify-center"
+  onClick={() => setMenuOpen(!menuOpen)}
+>
+  <div className="p-2 border border-slate-700 rounded-lg flex flex-col items-center justify-center space-y-1.5">
+    <div className="w-6 h-0.5 bg-white rounded-full"></div>
+    <div className="w-6 h-0.5 bg-white rounded-full"></div>
+    <div className="w-6 h-0.5 bg-white rounded-full"></div>
+  </div>
+</button>
 
-           {/* Mobile Menu Button */}
-      <button
-        className="md:hidden text-2xl text-white"
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        {menuOpen ? <FaTimes /> : <FaBars />}
-      </button>
+{menuOpen && (
+  <div className="fixed inset-0 flex justify-end z-50">
+    {/* Overlay background */}
+    <div
+      className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+      onClick={() => setMenuOpen(false)}
+    ></div>
 
-      {/* Mobile Menu Overlay */}
-      {menuOpen && (
-        <div className="fixed top-0 left-0 w-full h-full bg-black/95 flex flex-col items-center justify-center gap-6 text-lg z-50">
-          <Link
-            href="/auth"
-            className="text-white hover:text-[#FFCC66]"
-            onClick={() => setMenuOpen(false)}
-          >
-            Log in
-          </Link>
-          <Link
-            href="/inventory"
-            className="text-white hover:text-[#FFCC66]"
-            onClick={() => setMenuOpen(false)}
-          >
-            Inventory
-          </Link>
-          <Link
-            href="/contact"
-            className="text-white hover:text-[#FFCC66]"
-            onClick={() => setMenuOpen(false)}
-          >
-            Contact
-          </Link>
-          <button
-            className="mt-8 px-6 py-2 bg-[#FFCC66] text-black rounded"
-            onClick={() => setMenuOpen(false)}
-          >
-            Close Menu
-          </button>
-          </div>
-        )}
+    {/* Sidebar Panel */}
+    <div className="relative w-[80%] sm:w-[350px] h-full bg-black text-white flex flex-col shadow-lg animate-slideInRight">
+      {/* Header */}
+      <div className="flex items-center justify-between p-6 border-b border-gray-800">
+        <div className="flex items-center">
+          <img src="/vynoxlogo.jpg" alt="Vynox Logo" className="h-8 w-8 rounded-md" />
+          <span className="text-white text-xl font-semibold ml-3">Menu</span>
+        </div>
+        <button
+          className="text-gray-300 text-2xl p-2 hover:text-[#FFCC66] transition-colors"
+          onClick={() => setMenuOpen(false)}
+        >
+          <FaTimes />
+        </button>
+      </div>
+
+      {/* Navigation Links */}
+      <nav className="flex flex-col p-6 gap-6 text-left flex-1 overflow-y-auto">
+        <Link
+          href="/auth"
+          className="text-white text-lg hover:text-[#FFCC66] transition-colors"
+          onClick={() => setMenuOpen(false)}
+        >
+          Log in
+        </Link>
+
+        <Link
+          href="/inventory"
+          className="text-white text-lg hover:text-[#FFCC66] transition-colors"
+          onClick={() => setMenuOpen(false)}
+        >
+          Inventory
+        </Link>
+
+        <Link
+          href="/contact"
+          className="text-white text-lg hover:text-[#FFCC66] transition-colors"
+          onClick={() => setMenuOpen(false)}
+        >
+          Contact
+        </Link>
+      </nav>
+    </div>
+  </div>
+)}
+
+
       </header>
 
       {/* HERO */}
@@ -104,10 +130,7 @@ export default function HomePage() {
 
           {/* Buttons */}
           <div className="mt-6 flex gap-4">
-            <button className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#FFCC66] to-[#FF7E5F] px-6 py-3 text-white font-medium shadow-[0_0_10px_rgba(255,204,102,0.6),0_0_20px_rgba(255,126,95,0.5)] transition-transform duration-300 hover:scale-105">
-              <CiCalendar className="text-xl" />
-              Book Now
-            </button>
+        
 
             <Link
               href="/services"
