@@ -133,63 +133,94 @@ export default function ServicesPage() {
           >
             Inventory
           </Link>
-          <button className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#FFCC66] to-[#FF7E5F] px-5 py-2 text-white font-medium shadow-lg transition-transform duration-300 hover:scale-105">
-            <CiCalendar className="text-xl" />
-            Book Now
-          </button>
+            <Link
+            href="/inventory"
+            className="hover:text-[#FFCC66] hover:underline"
+          >
+            contact
+          </Link>
         </nav>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          className="md:hidden text-2xl"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <HiOutlineX /> : <HiOutlineMenu />}
-        </button>
-
-       {/* Mobile Menu */}
-{mobileMenuOpen && (
-  <div className="fixed top-0 right-0 h-full w-3/4 bg-black text-white flex flex-col p-6 z-50 md:hidden shadow-2xl transition-transform duration-300">
-    {/* Header */}
-    <div className="flex justify-between items-center mb-6">
-      <h2 className="text-lg font-semibold">Menu</h2>
-      <button
-        className="text-gray-300 hover:text-white border border-gray-600 rounded-md px-2 py-1"
-        onClick={() => setMobileMenuOpen(false)}
-      >
-        ✕
-      </button>
+       {/* Mobile Menu Toggle */}
+<button
+  className="md:hidden text-white z-50 p-2 flex items-center justify-center"
+  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+>
+  {/* Burger Icon with Border */}
+  {!mobileMenuOpen && (
+    <div className="p-2 border border-slate-700 rounded-lg flex flex-col items-center justify-center space-y-1.5">
+      <div className="w-6 h-0.5 bg-white rounded-full"></div>
+      <div className="w-6 h-0.5 bg-white rounded-full"></div>
+      <div className="w-6 h-0.5 bg-white rounded-full"></div>
     </div>
+  )}
+  
+  {/* Cross Icon */}
+  {mobileMenuOpen && (
+    <HiOutlineX className="text-3xl text-white hover:text-[#FFCC66] transition-colors" />
+  )}
+</button>
 
-    {/* Menu Items */}
-    <nav className="flex flex-col gap-4">
-      <Link
-        href="/auth"
-        className="hover:text-[#FFCC66]"
-        onClick={() => setMobileMenuOpen(false)}
-      >
-        Log in
-      </Link>
+{/* Mobile Sidebar Menu */}
+{mobileMenuOpen && (
+  <div className="fixed inset-0 flex justify-end z-50 md:hidden">
+    {/* Dim background */}
+    <div
+      className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+      onClick={() => setMobileMenuOpen(false)}
+    ></div>
 
-      <Link
-        href="/inventory"
-        className="hover:text-[#FFCC66]"
-        onClick={() => setMobileMenuOpen(false)}
-      >
-        Inventory
-      </Link>
+    {/* Sidebar */}
+    <div className="relative w-[80%] sm:w-[350px] h-full bg-black text-white flex flex-col shadow-lg animate-slideInRight">
+      {/* Header */}
+      <div className="flex items-center justify-between p-6 border-b border-gray-800">
+        <div className="flex items-center">
+          <img
+            src="/vynoxlogo.jpg"
+            alt="Vynox Logo"
+            className="h-8 w-8 rounded-md"
+          />
+          <span className="text-white text-xl font-semibold ml-3">Menu</span>
+        </div>
 
-      {/* Book Now Button - Placed After Inventory */}
-      <button
-        className="mt-2 flex items-center justify-center gap-2 w-full rounded-lg bg-gradient-to-r from-[#FFCC66] to-[#FF7E5F] px-5 py-3 text-white font-medium shadow-lg hover:scale-105 transition-transform duration-300"
-        onClick={() => setMobileMenuOpen(false)}
-      >
-        <CiCalendar className="text-xl" />
-        Book now
-      </button>
-    </nav>
+        <button
+          className="text-white text-3xl font-bold hover:text-[#FFCC66] transition-colors"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          <HiOutlineX />
+        </button>
+      </div>
+
+      {/* Navigation Links */}
+      <nav className="flex flex-col p-6 gap-6 text-left flex-1 overflow-y-auto">
+        <Link
+          href="/auth"
+          className="text-white text-lg hover:text-[#FFCC66] transition-colors"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          Log in
+        </Link>
+
+        <Link
+          href="/inventory"
+          className="text-white text-lg hover:text-[#FFCC66] transition-colors"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          Inventory
+        </Link>
+
+        <Link
+          href="/contact"
+          className="text-white text-lg hover:text-[#FFCC66] transition-colors"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          Contact
+        </Link>
+      </nav>
+    </div>
   </div>
 )}
+
 
 
         

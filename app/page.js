@@ -48,7 +48,7 @@ export default function HomePage() {
             Contact
           </Link>
         </nav>
-{/* Put this part INSIDE your <header> where you want the hamburger icon to appear */}
+
 <button
   className="md:hidden text-white z-50 p-2 flex items-center justify-center"
   onClick={() => setMenuOpen(!menuOpen)}
