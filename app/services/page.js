@@ -133,12 +133,13 @@ export default function ServicesPage() {
           >
             Inventory
           </Link>
-            <Link
+              <Link
             href="/inventory"
             className="hover:text-[#FFCC66] hover:underline"
           >
-            contact
+            Contact
           </Link>
+       
         </nav>
 
        {/* Mobile Menu Toggle */}

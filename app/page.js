@@ -128,9 +128,9 @@ export default function HomePage() {
           <h1 className="text-5xl font-bold">Vynox Auto Detailing</h1>
           <p className="mt-4 text-xl">Premium Car Care. Inside & Out.</p>
 
-          {/* Buttons */}
+          {/* Button */}
           <div className="mt-6 flex gap-4">
-        
+          
 
             <Link
               href="/services"
